@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>텍스트 어드벤처 게임 - 메인</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="/static/css/game.css">
+</head>
+<body>
+    <div id="game">
+        <h1>모험</h1>
+        <p id="story-text"></p>
+        <div id="choices"></div>
+        <p id="status">
+            목숨: <span id="lives"></span>
+            멘탈: <span id="mental"></span>
+            돈: <span id="money"></span>
+            찾은 보물: <span id="found_treasures"></span>
+        </p>
+        <form action="/save" method="post">
+            <input type="hidden" id="story_key" name="story_key" value="">
+            <input type="hidden" id="story_text" name="story_text" value="">
+            <input type="hidden" id="next_choices" name="next_choices" value="">
+            <input type="hidden" id="found_at" name="found_at" value="">
+            <button type="submit">저장</button>
+        </form>
+    </div>
+
+    <script type="module" src="/static/js/main.js"></script>
+</body>
+</html>
