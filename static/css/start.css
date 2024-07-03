@@ -1,0 +1,86 @@
+/* 공통 스타일 */
+
+
+body {
+    font-family: Arial, sans-serif;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    position: relative;   
+    background-color: gray;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+a {
+    text-decoration: none; color: #000;
+}
+ol, ul, li {
+    list-style: none;
+}
+
+/* 가로 */
+@media (orientation: landscape) {
+    h1 {
+        font-size: 6vw; /* 중간 글꼴 크기 */
+    }
+    
+    .title{
+        position: relative;
+        display: grid;
+        text-align: center;
+        position: absolute;
+        top: 10vw;
+    }
+    .title > img {
+        width: 20vw;
+    }
+
+    #start-button {
+        display: inline-block;
+        text-align: center;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        margin-top: 3px;
+        font-size: 2vw;
+        color: white;
+    }
+}
+
+/* 세로 */
+@media (orientation: portrait) {
+    h1 {
+        font-size: 6vw; /* 중간 글꼴 크기 */
+    }
+    
+    .title{
+        position: relative;
+        display: grid;
+        text-align: center;
+        position: absolute;
+        bottom: 30vw;
+    }
+    .title > img {
+        width: 50vw;
+    }
+
+    #start-button {
+        display: inline-block;
+        text-align: center;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        margin-top: 3vh;
+        font-size: 5vw;
+        color: white;
+    }
+}
