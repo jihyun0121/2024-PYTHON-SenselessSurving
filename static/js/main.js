@@ -286,88 +286,88 @@ const stories = [
                 { text: "다음", next: "start"}
             ]
         }
-    },
-    {   //섬 스토리
-        start: {
-            text: "섬에 갇힘",
-            image: "/static/image/임시 이미지.svg",
-            choices: [
-                { text: "탐험하기", next: "explore_island" },
-                { text: "구조 기다리기", next: "wait_for_rescue" }
-            ]
-        },
-        explore_island: {
-            text: "유적 발견",
-            choices: [
-                { text: "유적 조사", next: "explore_ruins" },
-                { text: "다른 곳 탐험하기", next: "explore_another_place" }
-            ]
-        },
-        wait_for_rescue: {
-            text: "구조 반응 없음",
-            choices: [
-                { text: "섬 탐험하기", next: "explore_island" },
-                { text: "기다리기", next: "wait_longer" }
-            ]
-        },
-        explore_ruins: {
-            text: "보물 발견",
-            choices: [
-                { text: "계속합니다", next: "next_story" }
-            ]
-        },
-        explore_another_place: {
-            text: "아무것도 없음",
-            choices: [
-                { text: "계속합니다", next: "explore_island" }
-            ]
-        },
-        wait_longer: {
-            text: "여전히 구조 반응 없음",
-            choices: [
-                { text: "섬을 탐험합니다", next: "explore_island" },
-                { text: "기다립니다", next: "wait_longer" }
-            ]
-        },
-        next_story: {
-            text: "다음으로",
-            choices: [
-                { text: "다음", next: "start"}
-            ]
-        },
-        isFollowUp: false,
-        key: "island_story"
-    },
-    {   // 섬 후속 스토리
-        start: {
-            text: "마을 축제",
-            image: "/static/image/임시 이미지.svg",
-            choices: [
-                { text: "참여하기", next: "join_festival" },
-                { text: "무시하기", next: "ignore_festival" }
-            ]
-        },
-        join_festival: {
-            text: "정보와 새로운 친구",
-            choices: [
-                { text: "계속", next: "next_story" }
-            ]
-        },
-        ignore_festival: {
-            text: "무시하고 탐험 계속",
-            choices: [
-                { text: "계속", next: "next_story" }
-            ]
-        },
-        next_story: {
-            text: "다음으로",
-            choices: [
-                { text: "다음", next: "start"}
-            ]
-        },
-        isFollowUp: true,
-        key: "follow_up_story"
-    }
+    }//,
+    // {   //섬 스토리
+    //     start: {
+    //         text: "섬에 갇힘",
+    //         image: "/static/image/임시 이미지.svg",
+    //         choices: [
+    //             { text: "탐험하기", next: "explore_island" },
+    //             { text: "구조 기다리기", next: "wait_for_rescue" }
+    //         ]
+    //     },
+    //     explore_island: {
+    //         text: "유적 발견",
+    //         choices: [
+    //             { text: "유적 조사", next: "explore_ruins" },
+    //             { text: "다른 곳 탐험하기", next: "explore_another_place" }
+    //         ]
+    //     },
+    //     wait_for_rescue: {
+    //         text: "구조 반응 없음",
+    //         choices: [
+    //             { text: "섬 탐험하기", next: "explore_island" },
+    //             { text: "기다리기", next: "wait_longer" }
+    //         ]
+    //     },
+    //     explore_ruins: {
+    //         text: "보물 발견",
+    //         choices: [
+    //             { text: "계속합니다", next: "next_story" }
+    //         ]
+    //     },
+    //     explore_another_place: {
+    //         text: "아무것도 없음",
+    //         choices: [
+    //             { text: "계속합니다", next: "explore_island" }
+    //         ]
+    //     },
+    //     wait_longer: {
+    //         text: "여전히 구조 반응 없음",
+    //         choices: [
+    //             { text: "섬을 탐험합니다", next: "explore_island" },
+    //             { text: "기다립니다", next: "wait_longer" }
+    //         ]
+    //     },
+    //     next_story: {
+    //         text: "다음으로",
+    //         choices: [
+    //             { text: "다음", next: "start"}
+    //         ]
+    //     },
+    //     isFollowUp: false,
+    //     key: "island_story"
+    // },
+    // {   // 섬 후속 스토리
+    //     start: {
+    //         text: "마을 축제",
+    //         image: "/static/image/임시 이미지.svg",
+    //         choices: [
+    //             { text: "참여하기", next: "join_festival" },
+    //             { text: "무시하기", next: "ignore_festival" }
+    //         ]
+    //     },
+    //     join_festival: {
+    //         text: "정보와 새로운 친구",
+    //         choices: [
+    //             { text: "계속", next: "next_story" }
+    //         ]
+    //     },
+    //     ignore_festival: {
+    //         text: "무시하고 탐험 계속",
+    //         choices: [
+    //             { text: "계속", next: "next_story" }
+    //         ]
+    //     },
+    //     next_story: {
+    //         text: "다음으로",
+    //         choices: [
+    //             { text: "다음", next: "start"}
+    //         ]
+    //     },
+    //     isFollowUp: true,
+    //     key: "follow_up_story"
+    // }
 
 ];
 
@@ -411,6 +411,24 @@ function selectNewStory() {
     }
 }
 
+// 타이핑 애니메이션 함수
+function typeWriterEffect(text) {
+    const textElement = document.getElementById('story-text-content');
+    textElement.innerHTML = '';
+    let i = 0;
+    const speed = 50; // 타이핑 속도
+
+    function typeWriter() {
+        if (i < text.length) {
+            textElement.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
+        }
+    }
+
+    typeWriter();
+}
+
 // 스토리 표시 함수
 function displayStory(storyKey) {
     const scene = currentStory[storyKey];
@@ -420,11 +438,13 @@ function displayStory(storyKey) {
     if (scene.image) {
         imageHtml = `<img src="${scene.image}" alt="story image" />`;
     }
-    
-    // 스토리 텍스트와 이미지를 함께 표시
-    storyText.innerHTML = `${imageHtml}<p>${scene.text}</p>`;
+
+    // 스토리 텍스트는 타이핑 애니메이션으로 표시
+    storyText.innerHTML = `${imageHtml}<p id="story-text-content"></p>`;
+    typeWriterEffect(scene.text);
+
     choicesDiv.innerHTML = '';
-    
+
     scene.choices.forEach(choice => {
         const button = document.createElement('button');
         button.textContent = choice.text;
