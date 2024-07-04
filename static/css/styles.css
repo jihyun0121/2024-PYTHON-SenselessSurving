@@ -10,5 +10,17 @@ body{
     -webkit-user-select:none;
     -moz-user-select:none;
     -ms-user-select:none;
-    user-select:none
+    user-select:none;
+    font-family: Arial, sans-serif;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    position: relative;   
+    background-color: black;
 }
+body::-webkit-scrollbar {
+    display: none;
+  }
