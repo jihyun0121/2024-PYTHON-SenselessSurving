@@ -8,29 +8,31 @@
     <link rel="stylesheet" href="/static/css/game.css">
 </head>
 <body>
-    <div id="game">
-        <h1>모험</h1>
-        <div id="story-text"></div>
-        <div id="choices"></div>
-        <div id="status">
-            목숨: <span id="lives"></span>
-            멘탈: <span id="mental"></span>
-            돈: <span id="money"></span>
-            찾은 보물: <span id="found_treasures"></span>
+    <div id="container">
+        <div class="header">
+            <div id="status">
+                <div id="lives"></div>
+                <div id="mental"></div>
+                <div id="money"></div>
+                <div id="found_treasures"></div>
+            </div>
         </div>
-        <form action="/save" method="post">
-            <input type="hidden" id="story_key" name="story_key" value="">
-            <input type="hidden" id="story_text" name="story_text" value="">
-            <input type="hidden" id="next_choices" name="next_choices" value="">
-            <input type="hidden" id="found_at" name="found_at" value="">
-        </form>
-        <button id="reset-button">게임 초기화</button>
+        <div class="story-text" id="story-text"></div>
+        <div class="bar">
+            <div id="choices"></div>
+            <form action="/save" method="post">
+                <input type="hidden" id="story_key" name="story_key" value="">
+                <input type="hidden" id="story_text" name="story_text" value="">
+                <input type="hidden" id="next_choices" name="next_choices" value="">
+                <input type="hidden" id="found_at" name="found_at" value="">
+            </form>
+            <button id="reset-button">
+                <img src="/static/image/초기화.svg" alt="초기화">
+            </button>
+            <div class="box"></div>
+        </div>
     </div>
 
-    
-
-
-
-    <script type="module" src="/static/js/main.js"></script>
+    <script src="/static/js/main.js"></script>
 </body>
 </html>
