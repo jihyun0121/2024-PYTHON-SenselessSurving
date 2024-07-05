@@ -371,6 +371,24 @@ const stories = [
 
 ];
 
+// 타이핑 애니메이션 함수
+function typeWriterEffect(text) {
+    const textElement = document.getElementById('story-text-content');
+    textElement.innerHTML = '';
+    let i = 0;
+    const speed = 50; // 타이핑 속도
+
+    function typeWriter() {
+        if (i < text.length) {
+            textElement.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
+        }
+    }
+
+    typeWriter();
+}
+
 // 게임 시작 함수
 function startGame() {
     // 초기화
@@ -409,24 +427,6 @@ function selectNewStory() {
     if (currentStory.requiresPrevious) {
         requiredStorySeen = true;
     }
-}
-
-// 타이핑 애니메이션 함수
-function typeWriterEffect(text) {
-    const textElement = document.getElementById('story-text-content');
-    textElement.innerHTML = '';
-    let i = 0;
-    const speed = 50; // 타이핑 속도
-
-    function typeWriter() {
-        if (i < text.length) {
-            textElement.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(typeWriter, speed);
-        }
-    }
-
-    typeWriter();
 }
 
 // 스토리 표시 함수
@@ -482,6 +482,7 @@ function makeChoice(next) {
             break;
         case 'explore_forest':
         case 'pass_cave':
+        case 'lose_mental':
             mental--;
             if (mental <= 0) {
                 endGame('lose');

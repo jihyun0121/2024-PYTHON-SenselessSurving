@@ -102,6 +102,7 @@
         font-size: 5vw;
         color: white;
         bottom: 0;
+        height: 10vw;
     }
     
     button:hover {
@@ -117,8 +118,8 @@
 
     #reset-button{
         position: relative;
-        width: 10vw;
-        height: 5vw;
+        width: auto;
+        height: auto;
         display: grid;
         text-align: center;
         border: none;
