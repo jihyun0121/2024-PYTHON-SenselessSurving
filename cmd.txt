@@ -1,8 +1,11 @@
 # 처음 설치
+cd C:/MIRIM/SURVIVING-SENSELESS
+
 python -m venv venv
 venv\Scripts\activate
 python.exe -m pip install --upgrade pip
 pip install -r requirements.txt
+
 set FLASK_APP=game.py
 set FLASK_ENV=development
 flask run
