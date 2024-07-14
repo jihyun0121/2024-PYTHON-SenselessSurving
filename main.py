@@ -1,6 +1,6 @@
 from flask import render_template, jsonify, request
 import random
-from app import app  # game.py 파일에서 Flask 인스턴스를 가져옵니다
+from app import app
 
 # 초기 상태 설정
 lives = 3
@@ -16,355 +16,355 @@ requiredStorySeen = False
 # 스토리 데이터
 stories = [
     {   # 어두운 숲 1 스토리
-        start: {
-            text: "어두운 숲 1",
-            image: "/static/image/임시 이미지.svg",
-            choices: [
-                { text: "북쪽", next: "north_path" },
-                { text: "남쪽", next: "south_path" }
+        "start": {
+            "text": "어두운 숲 1",
+            "image": "/static/image/임시 이미지.svg",
+            "choices": [
+                { "text": "북쪽", next: "north_path" },
+                { "text": "남쪽", next: "south_path" }
             ]
         },
-        north_path: {
-            text: "보물 발견 1",
-            choices: [
-                { text: "열기", next: "treasure" },
-                { text: "그냥 두기", next: "leave_chest" }
+        "north_path": {
+            "text": "보물 발견 1",
+            "choices": [
+                { "text": "열기", next: "treasure" },
+                { "text": "그냥 두기", next: "leave_chest" }
             ]
         },
-        south_path: {
-            text: "야생 동물 조우 1",
-            choices: [
-                { text: "싸우기", next: "fight_animal" },
-                { text: "도망가기", next: "run_away" }
+        "south_path": {
+            "text": "야생 동물 조우 1",
+            "choices": [
+                { "text": "싸우기", next: "fight_animal" },
+                { "text": "도망가기", next: "run_away" }
             ]
         },
-        treasure: {
-            text: "보물 획득",
-            choices: [
-                { text: "계속", next: "next_story" }
+        "treasure": {
+            "text": "보물 획득",
+            "choices": [
+                { "text": "계속", next: "next_story" }
             ]
         },
-        leave_chest: {
-            text: "떠나기, 야생동물 조우 2",
-            choices: [
-                { text: "싸우기", next: "fight_animal" },
-                { text: "도망가기", next: "run_away" }
+        "leave_chest": {
+            "text": "떠나기, 야생동물 조우 2",
+            "choices": [
+                { "text": "싸우기", next: "fight_animal" },
+                { "text": "도망가기", next: "run_away" }
             ]
         },
-        fight_animal: {
-            text: "부상, 목숨 감소",
-            choices: [
-                { text: "다음", next: "next_story" }
+        "fight_animal": {
+            "text": "부상, 목숨 감소",
+            "choices": [
+                { "text": "다음", next: "next_story" }
             ]
         },
-        run_away: {
-            text: "도망, 목숨 감소",
-            choices: [
-                { text: "다음", next: "next_story" }
+        "run_away": {
+            "text": "도망, 목숨 감소",
+            "choices": [
+                { "text": "다음", next: "next_story" }
             ]
         },
-        next_story: {
-            text: "다음으로",
-            choices: [
-                { text: "다음", next: "start"}
+        "next_story": {
+            "text": "다음으로",
+            "choices": [
+                { "text": "다음", next: "start"}
             ]
         }
     },
     {   # 오래된 성 스토리
-        start: {
-            text: "오래된 성",
-            image: "/static/image/임시 이미지.svg",
-            choices: [
-                { text: "들어가기", next: "enter_castle" },
-                { text: "주변 탐험", next: "explore_area" }
+        "start": {
+            "text": "오래된 성",
+            "image": "/static/image/임시 이미지.svg",
+            "choices": [
+                { "text": "들어가기", next: "enter_castle" },
+                { "text": "주변 탐험", next: "explore_area" }
             ]
         },
-        enter_castle: {
-            text: "고대 유물 발견 1",
-            choices: [
-                { text: "유물 조사", next: "inspect_relic" },
-                { text: "유물 무시", next: "ignore_relic" }
+        "enter_castle": {
+            "text": "고대 유물 발견 1",
+            "choices": [
+                { "text": "유물 조사", next: "inspect_relic" },
+                { "text": "유물 무시", next: "ignore_relic" }
             ]
         },
-        explore_area: {
-            text: "탐험, 덫 걸림",
-            choices: [
-                { text: "벗어나기", next: "escape_trap" },
-                { text: "도움 요청", next: "call_for_help" }
+        "explore_area": {
+            "text": "탐험, 덫 걸림",
+            "choices": [
+                { "text": "벗어나기", next: "escape_trap" },
+                { "text": "도움 요청", next: "call_for_help" }
             ]
         },
-        inspect_relic: {
-            text: "유물 조사, 보물발견 2",
-            choices: [
-                { text: "계속", next: "next_story" }
+        "inspect_relic": {
+            "text": "유물 조사, 보물발견 2",
+            "choices": [
+                { "text": "계속", next: "next_story" }
             ]
         },
-        ignore_relic: {
-            text: "유물 무시, 덫 걸림.",
-            choices: [
-                { text: "덫에서 벗어납니다", next: "escape_trap" },
-                { text: "도움을 요청합니다", next: "call_for_help" }
+        "ignore_relic": {
+            "text": "유물 무시, 덫 걸림.",
+            "choices": [
+                { "text": "덫에서 벗어납니다", next: "escape_trap" },
+                { "text": "도움을 요청합니다", next: "call_for_help" }
             ]
         },
-        escape_trap: {
-            text: "부상, 목숨 감소",
-            choices: [
-                { text: "다음", next: "next_story" }
+        "escape_trap": {
+            "text": "부상, 목숨 감소",
+            "choices": [
+                { "text": "다음", next: "next_story" }
             ]
         },
-        call_for_help: {
-            text: "도움 요청, 목숨 감소",
-            choices: [
-                { text: "다음", next: "next_story" }
+        "call_for_help": {
+            "text": "도움 요청, 목숨 감소",
+            "choices": [
+                { "text": "다음", next: "next_story" }
             ]
         },
-        next_story: {
-            text: "다음으로",
-            choices: [
-                { text: "다음", next: "start"}
+        "next_story": {
+            "text": "다음으로",
+            "choices": [
+                { "text": "다음", next: "start"}
             ]
         }
     },
     {   # 신비한 동굴
-        start: {
-            text: "신비로운 동굴 발견",
-            image: "/static/image/임시 이미지.svg",
-            choices: [
-                { text: "들어가기", next: "enter_cave" },
-                { text: "지나기기", next: "pass_cave" }
+        "start": {
+            "text": "신비로운 동굴 발견",
+            "image": "/static/image/임시 이미지.svg",
+            "choices": [
+                { "text": "들어가기", next: "enter_cave" },
+                { "text": "지나기기", next: "pass_cave" }
             ]
         },
-        enter_cave: {
-            text: "보석 발견",
-            choices: [
-                { text: "줍기", next: "take_gem" },
-                { text: "무시하기", next: "ignore_gem" }
+        "enter_cave": {
+            "text": "보석 발견",
+            "choices": [
+                { "text": "줍기", next: "take_gem" },
+                { "text": "무시하기", next: "ignore_gem" }
             ]
         },
-        pass_cave: {
-            text: "지나침, 멘탈 감소",
-            choices: [
-                { text: "계속", next: "next_story" }
+        "pass_cave": {
+            "text": "지나침, 멘탈 감소",
+            "choices": [
+                { "text": "계속", next: "next_story" }
             ]
         },
-        take_gem: {
-            text: "보석 획득, 돈 회복",
-            choices: [
-                { text: "계속", next: "next_story" }
+        "take_gem": {
+            "text": "보석 획득, 돈 회복",
+            "choices": [
+                { "text": "계속", next: "next_story" }
             ]
         },
-        ignore_gem: {
-            text: "보석 무시",
-            choices: [
-                { text: "계속", next: "next_story" }
+        "ignore_gem": {
+            "text": "보석 무시",
+            "choices": [
+                { "text": "계속", next: "next_story" }
             ]
         },
-        next_story: {
-            text: "다음으로",
-            choices: [
-                { text: "다음", next: "start"}
+        "next_story": {
+            "text": "다음으로",
+            "choices": [
+                { "text": "다음", next: "start"}
             ]
         },
-        isFollowUp: false
+        "isFollowUp": "false"
     },
     {   # 신비한 동굴 후속 스토리
-        start: {
-            text: "갈림길",
-            image: "/static/image/임시 이미지.svg",
-            choices: [
-                { text: "북쪽", next: "north_path" },
-                { text: "남쪽", next: "south_path" }
+        "start": {
+            "text": "갈림길",
+            "image": "/static/image/임시 이미지.svg",
+            "choices": [
+                { "text": "북쪽", next: "north_path" },
+                { "text": "남쪽", next: "south_path" }
             ]
         },
-        north_path: {
-            text: "북쪽, 동굴 발견",
-            choices: [
-                { text: "들어가기", next: "enter_cave" },
-                { text: "지나치기", next: "pass_cave" }
+        "north_path": {
+            "text": "북쪽, 동굴 발견",
+            "choices": [
+                { "text": "들어가기", next: "enter_cave" },
+                { "text": "지나치기", next: "pass_cave" }
             ]
         },
-        south_path: {
-            text: "남쪽, 야생 동물 조우",
-            choices: [
-                { text: "싸우기", next: "fight_animal" },
-                { text: "도망", next: "run_away" }
+        "south_path": {
+            "text": "남쪽, 야생 동물 조우",
+            "choices": [
+                { "text": "싸우기", next: "fight_animal" },
+                { "text": "도망", next: "run_away" }
             ]
         },
-        enter_cave: {
-            text: "고대 유물 발견 2",
-            choices: [
-                { text: "유물 조사", next: "inspect_relic" },
-                { text: "유물 무시", next: "ignore_relic" }
+        "enter_cave": {
+            "text": "고대 유물 발견 2",
+            "choices": [
+                { "text": "유물 조사", next: "inspect_relic" },
+                { "text": "유물 무시", next: "ignore_relic" }
             ]
         },
-        inspect_relic: {
-            text: "유물 조사, 보물발견 3",
-            choices: [
-                { text: "계속", next: "next_story" }
+        "inspect_relic": {
+            "text": "유물 조사, 보물발견 3",
+            "choices": [
+                { "text": "계속", next: "next_story" }
             ]
         },
-        ignore_relic: {
-            text: "유물 무시, 덫 걸림.",
-            choices: [
-                { text: "덫에서 벗어납니다", next: "escape_trap" },
-                { text: "도움을 요청합니다", next: "call_for_help" }
+        "ignore_relic": {
+            "text": "유물 무시, 덫 걸림.",
+            "choices": [
+                { "text": "덫에서 벗어납니다", next: "escape_trap" },
+                { "text": "도움을 요청합니다", next: "call_for_help" }
             ]
         },
-        escape_trap: {
-            text: "부상, 목숨 감소",
-            choices: [
-                { text: "다음", next: "next_story" }
+        "escape_trap": {
+            "text": "부상, 목숨 감소",
+            "choices": [
+                { "text": "다음", next: "next_story" }
             ]
         },
-        call_for_help: {
-            text: "도움 요청, 목숨 감소",
-            choices: [
-                { text: "다음", next: "next_story" }
+        "call_for_help": {
+            "text": "도움 요청, 목숨 감소",
+            "choices": [
+                { "text": "다음", next: "next_story" }
             ]
         },
-        next_story: {
-            text: "다음으로",
-            choices: [
-                { text: "다음", next: "start"}
+        "next_story": {
+            "text": "다음으로",
+            "choices": [
+                { "text": "다음", next: "start"}
             ]
         },
-        requiresPrevious: true,
-        isFollowUp: true
+        "requiresPrevious": "true",
+        "isFollowUp": "true"
     },
     {   # 어두운 숲 2 스토리
-        start: {
-            text: "어두운 숲2",
-            image: "/static/image/임시 이미지.svg",
-            choices: [
-                { text: "나아가기", next: "follow_path" },
-                { text: "탐색하기", next: "explore_forest" }
+        "start": {
+            "text": "어두운 숲2",
+            "image": "/static/image/임시 이미지.svg",
+            "choices": [
+                { "text": "나아가기", next: "follow_path" },
+                { "text": "탐색하기", next: "explore_forest" }
             ]
         },
-        follow_path: {
-            text: "은화 주머니 발견",
-            choices: [
-                { text: "열어보기", next: "gain_money" },
-                { text: "지나가기", next: "leave_pouch" }
+        "follow_path": {
+            "text": "은화 주머니 발견",
+            "choices": [
+                { "text": "열어보기", next: "gain_money" },
+                { "text": "지나가기", next: "leave_pouch" }
             ]
         },
-        explore_forest: {
-            text: "길 잃기, 멘탈 감소",
-            choices: [
-                { text: "정신 차리기", next: "gain_mental" },
-                { text: "포기", next: "lose_mental" }
+        "explore_forest": {
+            "text": "길 잃기, 멘탈 감소",
+            "choices": [
+                { "text": "정신 차리기", next: "gain_mental" },
+                { "text": "포기", next: "lose_mental" }
             ]
         },
-        gain_money: {
-            text: "돈 회복",
-            choices: [
-                { text: "계속", next: "next_story" }
+        "gain_money": {
+            "text": "돈 회복",
+            "choices": [
+                { "text": "계속", next: "next_story" }
             ]
         },
-        leave_pouch: {
-            text: "아무것도 없음",
-            choices: [
-                { text: "계속", next: "next_story" }
+        "leave_pouch": {
+            "text": "아무것도 없음",
+            "choices": [
+                { "text": "계속", next: "next_story" }
             ]
         },
-        gain_mental: {
-            text: "멘탈 회복",
-            choices: [
-                { text: "계속", next: "next_story" }
+        "gain_mental": {
+            "text": "멘탈 회복",
+            "choices": [
+                { "text": "계속", next: "next_story" }
             ]
         },
-        lose_mental: {
-            text: "멘탈 감소",
-            choices: [
-                { text: "계속", next: "next_story" }
+        "lose_mental": {
+            "text": "멘탈 감소",
+            "choices": [
+                { "text": "계속", next: "next_story" }
             ]
         },
-        next_story: {
-            text: "다음으로",
-            choices: [
-                { text: "다음", next: "start"}
+        "next_story": {
+            "text": "다음으로",
+            "choices": [
+                { "text": "다음", next: "start"}
             ]
         }
     }#,
     # {   #섬 스토리
-    #     start: {
-    #         text: "섬에 갇힘",
+    #     "start": {
+    #         "text": "섬에 갇힘",
     #         image: "/static/image/임시 이미지.svg",
-    #         choices: [
-    #             { text: "탐험하기", next: "explore_island" },
-    #             { text: "구조 기다리기", next: "wait_for_rescue" }
+    #         "choices": [
+    #             { "text": "탐험하기", next: "explore_island" },
+    #             { "text": "구조 기다리기", next: "wait_for_rescue" }
     #         ]
     #     },
-    #     explore_island: {
-    #         text: "유적 발견",
-    #         choices: [
-    #             { text: "유적 조사", next: "explore_ruins" },
-    #             { text: "다른 곳 탐험하기", next: "explore_another_place" }
+    #     "explore_island": {
+    #         "text": "유적 발견",
+    #         "choices": [
+    #             { "text": "유적 조사", next: "explore_ruins" },
+    #             { "text": "다른 곳 탐험하기", next: "explore_another_place" }
     #         ]
     #     },
-    #     wait_for_rescue: {
-    #         text: "구조 반응 없음",
-    #         choices: [
-    #             { text: "섬 탐험하기", next: "explore_island" },
-    #             { text: "기다리기", next: "wait_longer" }
+    #     "wait_for_rescue": {
+    #         "text": "구조 반응 없음",
+    #         "choices": [
+    #             { "text": "섬 탐험하기", next: "explore_island" },
+    #             { "text": "기다리기", next: "wait_longer" }
     #         ]
     #     },
-    #     explore_ruins: {
-    #         text: "보물 발견",
-    #         choices: [
-    #             { text: "계속합니다", next: "next_story" }
+    #     "explore_ruins": {
+    #         "text": "보물 발견",
+    #         "choices": [
+    #             { "text": "계속합니다", next: "next_story" }
     #         ]
     #     },
-    #     explore_another_place: {
-    #         text: "아무것도 없음",
-    #         choices: [
-    #             { text: "계속합니다", next: "explore_island" }
+    #     "explore_another_place": {
+    #         "text": "아무것도 없음",
+    #         "choices": [
+    #             { "text": "계속합니다", next: "explore_island" }
     #         ]
     #     },
-    #     wait_longer: {
-    #         text: "여전히 구조 반응 없음",
-    #         choices: [
-    #             { text: "섬을 탐험합니다", next: "explore_island" },
-    #             { text: "기다립니다", next: "wait_longer" }
+    #     "wait_longer": {
+    #         "text": "여전히 구조 반응 없음",
+    #         "choices": [
+    #             { "text": "섬을 탐험합니다", next: "explore_island" },
+    #             { "text": "기다립니다", next: "wait_longer" }
     #         ]
     #     },
-    #     next_story: {
-    #         text: "다음으로",
-    #         choices: [
-    #             { text: "다음", next: "start"}
+    #     "next_story": {
+    #         "text": "다음으로",
+    #         "choices": [
+    #             { "text": "다음", next: "start"}
     #         ]
     #     },
-    #     isFollowUp: false,
-    #     key: "island_story"
+    #     "isFollowUp": "false",
+    #     "key": "island_story"
     # },
     # {   # 섬 후속 스토리
-    #     start: {
-    #         text: "마을 축제",
+    #     "start": {
+    #         "text": "마을 축제",
     #         image: "/static/image/임시 이미지.svg",
-    #         choices: [
-    #             { text: "참여하기", next: "join_festival" },
-    #             { text: "무시하기", next: "ignore_festival" }
+    #         "choices": [
+    #             { "text": "참여하기", next: "join_festival" },
+    #             { "text": "무시하기", next: "ignore_festival" }
     #         ]
     #     },
-    #     join_festival: {
-    #         text: "정보와 새로운 친구",
-    #         choices: [
-    #             { text: "계속", next: "next_story" }
+    #     "join_festival": {
+    #         "text": "정보와 새로운 친구",
+    #         "choices": [
+    #             { "text": "계속", next: "next_story" }
     #         ]
     #     },
-    #     ignore_festival: {
-    #         text: "무시하고 탐험 계속",
-    #         choices: [
-    #             { text: "계속", next: "next_story" }
+    #     "ignore_festival": {
+    #         "text": "무시하고 탐험 계속",
+    #         "choices": [
+    #             { "text": "계속", next: "next_story" }
     #         ]
     #     },
-    #     next_story: {
-    #         text: "다음으로",
-    #         choices: [
-    #             { text: "다음", next: "start"}
+    #     "next_story": {
+    #         "text": "다음으로",
+    #         "choices": [
+    #             { "text": "다음", next: "start"}
     #         ]
     #     },
-    #     isFollowUp: true,
-    #     key: "follow_up_story"
+    #     "isFollowUp": "true",
+    #     "key": ""follow_up_story""
     # }
 ]
 

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Adventure Game - Start</title>
+    <link rel="stylesheet" href="/static/css/start.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <img src="/static/image/타이틀.svg" alt="title">
+            <button id="start-button">- 터치하여 시작하기 -</button>
+        </div>
+    </div>
+    <script>
+        document.getElementById('start-button').addEventListener('click', function() {
+            window.location.href = '/game';
+        });
+    </script>
+</body>
+</html>

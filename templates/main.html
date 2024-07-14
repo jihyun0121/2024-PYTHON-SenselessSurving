@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>텍스트 어드벤처 게임 - 메인</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/game.css') }}">
+</head>
+<body>
+    <div id="container">
+        <div class="header">
+            <div id="status">
+                <div id="lives"></div>
+                <div id="mental"></div>
+                <div id="money"></div>
+                <div id="found_treasures"></div>
+            </div>
+        </div>
+        <div class="story-text" id="story-text"></div>
+        <div class="bar">
+            <div id="choices"></div>
+            <form id="gameForm" onsubmit="return saveChoice(event)">
+                <input type="hidden" id="story_key" name="story_key" value="">
+                <input type="hidden" id="story_text" name="story_text" value="">
+                <input type="hidden" id="next_choices" name="next_choices" value="">
+                <input type="hidden" id="found_at" name="found_at" value="">
+            </form>
+            <button id="reset-button">
+                <img src="{{ url_for('static', filename='image/초기화.svg') }}" alt="초기화">
+            </button>
+            <div class="box"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
