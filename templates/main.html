@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>텍스트 어드벤처 게임 - 메인</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/game.css') }}">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="/static/css/game.css">
 </head>
 <body>
     <div id="container">
@@ -20,19 +20,19 @@
         <div class="story-text" id="story-text"></div>
         <div class="bar">
             <div id="choices"></div>
-            <form id="gameForm" onsubmit="return saveChoice(event)">
+            <form action="/save" method="post">
                 <input type="hidden" id="story_key" name="story_key" value="">
                 <input type="hidden" id="story_text" name="story_text" value="">
                 <input type="hidden" id="next_choices" name="next_choices" value="">
                 <input type="hidden" id="found_at" name="found_at" value="">
             </form>
             <button id="reset-button">
-                <img src="{{ url_for('static', filename='image/초기화.svg') }}" alt="초기화">
+                <img src="/static/image/초기화.svg" alt="초기화">
             </button>
             <div class="box"></div>
         </div>
     </div>
 
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="/static/js/main.js"></script>
 </body>
 </html>
