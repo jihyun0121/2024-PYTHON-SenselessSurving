@@ -6,13 +6,13 @@ venv\Scripts\activate
 python.exe -m pip install --upgrade pip
 pip install -r requirements.txt
 
-set FLASK_APP=game.py
+set FLASK_APP=app.py
 set FLASK_ENV=development
 flask run
 
 # 서버 실행
 venv\Scripts\activate
-set FLASK_APP=game.py
+set FLASK_APP=app.py
 flask run
 
 # 서버 종료
