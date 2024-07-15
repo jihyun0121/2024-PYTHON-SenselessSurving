@@ -20,19 +20,18 @@
         <div class="story-text" id="story-text"></div>
         <div class="bar">
             <div id="choices"></div>
-            <form action="/save" method="post">
-                <input type="hidden" id="story_key" name="story_key" value="">
-                <input type="hidden" id="story_text" name="story_text" value="">
-                <input type="hidden" id="next_choices" name="next_choices" value="">
-                <input type="hidden" id="found_at" name="found_at" value="">
-            </form>
             <button id="reset-button">
                 <img src="/static/image/초기화.svg" alt="초기화">
             </button>
             <div class="box"></div>
         </div>
     </div>
-
-    <script src="/static/js/main.js"></script>
+    <div class="item-list">
+        <h3>Items:</h3>
+        <ul id="items">
+            <!-- 아이템 목록이 여기에 표시됩니다 -->
+        </ul>
+    </div>
+    <script src="/static/js/script.js"></script>
 </body>
 </html>

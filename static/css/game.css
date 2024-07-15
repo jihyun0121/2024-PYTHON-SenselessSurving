@@ -59,10 +59,25 @@
     }
 
     .header{
+        height: 10vw;
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
+    }
+
+    #status{
+        /* height: 20wh; */
+        display: flex;
+        position: sticky;
+        text-align: center;
+        border: none;
+        background-color: transparent;
+        /* cursor: pointer; */
+        color: white;
+    }
+    #status > img{
+        width: 5vw;
     }
 
     .story-text{
@@ -129,20 +144,6 @@
         bottom: 0;
     }
     #reset-button > img{
-        width: 5vw;
-    }
-
-    #status{
-        /* height: 20wh; */
-        display: flex;
-        position: sticky;
-        text-align: center;
-        border: none;
-        background-color: transparent;
-        cursor: pointer;
-        color: white;
-    }
-    #status > img{
         width: 5vw;
     }
 
