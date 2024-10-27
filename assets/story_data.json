@@ -1,0 +1,365 @@
+{
+    "intro": {
+        "start_game": {
+            "text": "모종의 이유로 비상식적인 세계에서 신의 계시를 받아 상식인이 되어 세상을 상식적으로 되돌리기 위한 여정을 떠나게 됩니다···.",
+            "image": "assets/images/tempImage.png",
+            "choices": [
+                {"text": "다음", "next": "first", "id": "none"}
+            ]
+        },
+        "first": {
+            "text": "여느때와 다름없이 당신은 평범한 하루를 보내던 중, 갑작스레 모든 것이 어긋나 있는 세상을 깨닫습니다. 도로는 물로 덮여 있으며, 사람들은 서로의 언어를 이해하지 못하고, 기본적인 예의조차도 찾아볼 수 없습니다.\n세상이 이렇게 비상식적이라는 사실을 자각한 순간, 당신의 머릿속에 낯선 목소리가 울려 퍼집니다.\n\n'이 비상식적인 세상을 바로잡아라. 나는 이 일을 위해 세 명의 사도를 보내었으니, 그들의 퀴즈를 통과하면 예절, 언어, 생활의 질서가 회복될 것이다. 너는 나의 계시를 받은 자로서 그들을 찾아가야 한다.'",
+            "choices": [
+                {"text": "신의 계시를 받아들인다", "next": "second", "id": "none"},
+                {"text": "그냥 이상한 세계에서 살아가기로 한다", "next": "ending/ending1", "id": "none"}
+            ]
+        },
+        "second": {
+            "text": "당신은 눈앞에 펼쳐진 혼돈을 잠시 바라본 뒤, 사도들을 찾아 나서기로 결심합니다.",
+            "choices": [
+                {"text": "다음", "next": "random_story", "id": "none"}
+            ]
+        }
+    },
+    "scenes1": {
+        "first": {
+            "text": "장면1",
+            "choices": [
+                {"text": "다음", "next": "second", "id": "none"}
+            ]
+        },
+        "second": {
+            "text": "다음",
+            "choices": [
+                {"text": "다음", "next": "random_story", "id": "none"}
+            ]
+        }
+    },
+    "scenes2": {
+        "first": {
+            "text": "장면2",
+            "choices": [
+                {"text": "다음", "next": "second", "id": "none"}
+            ]
+        },
+        "second": {
+            "text": "다음",
+            "choices": [
+                {"text": "다음", "next": "random_story", "id": "none"}
+            ]
+        }
+    },
+    "scenes3": {
+        "first": {
+            "text": "장면3",
+            "choices": [
+                {"text": "다음", "next": "second", "id": "none"}
+            ]
+        },
+        "second": {
+            "text": "다음",
+            "choices": [
+                {"text": "다음", "next": "random_story", "id": "none"}
+            ]
+        }
+    },
+    "scenes4": {
+        "first": {
+            "text": "장면4",
+            "choices": [
+                {"text": "다음", "next": "second", "id": "none"}
+            ]
+        },
+        "second": {
+            "text": "다음",
+            "choices": [
+                {"text": "다음", "next": "random_story", "id": "none"}
+            ]
+        }
+    },
+    "scenes5": {
+        "first": {
+            "text": "장면5",
+            "choices": [
+                {"text": "다음", "next": "second", "id": "none"}
+            ]
+        },
+        "second": {
+            "text": "다음",
+            "choices": [
+                {"text": "다음", "next": "random_story", "id": "none"}
+            ]
+        }
+    },
+    "scenes6": {
+        "first": {
+            "text": "장면6",
+            "choices": [
+                {"text": "다음", "next": "second", "id": "none"}
+            ]
+        },
+        "second": {
+            "text": "다음",
+            "choices": [
+                {"text": "다음", "next": "random_story", "id": "none"}
+            ]
+        }
+    },
+    "scenes7": {
+        "first": {
+            "text": "장면7",
+            "choices": [
+                {"text": "다음", "next": "second", "id": "none"}
+            ]
+        },
+        "second": {
+            "text": "다음",
+            "choices": [
+                {"text": "다음", "next": "random_story", "id": "none"}
+            ]
+        }
+    },
+    "meet1": {
+        "first": {
+            "text": "당신은 첫번째 언어의 사도와 조우했습니다!",
+            "choices": [
+                {"text": "다음", "next": "second", "id": "none"}
+            ]
+        },
+        "second": {
+            "text": "'퀴즈를 맞춘다면 <언어> 상식을 다시 되돌려놓을 수 있을 거야.'",
+            "choices": [
+                {"text": "퀴즈를 풀자", "next": "Quiz1/first", "id": "quiz"},
+                {"text": "포기한다", "next": "random_story", "id": "none"}
+            ]
+        }
+    },
+    "meet2": {
+        "first": {
+            "text": "당신은 두번째 생활의 사도와 조우했습니다!",
+            "choices": [
+                {"text": "다음", "next": "second", "id": "none"}
+            ]
+        },
+        "second": {
+            "text": "'퀴즈를 맞춘다면 <생활> 상식을 되찾게 될 것입니다.'",
+            "choices": [
+                {"text": "퀴즈를 풀자", "next": "Quiz2/first", "id": "quiz"},
+                {"text": "포기한다", "next": "random_story", "id": "none"}
+            ]
+        }
+    },
+    "meet3": {
+        "first": {
+            "text": "당신은 세번째 예의의 사도와 조우했습니다!",
+            "choices": [
+                {"text": "다음", "next": "second", "id": "none"}
+            ]
+        },
+        "second": {
+            "text": "'퀴즈를 통과한다면 <예의> 상식을 다시 되돌려놓을 수 있겠지.'",
+            "choices": [
+                {"text": "퀴즈를 풀자", "next": "Quiz3/first", "id": "quiz"},
+                {"text": "포기한다", "next": "random_story", "id": "none"}
+            ]
+        }
+    },
+    "Quiz1": {
+        "first": {
+            "text": "다정하고 금실 좋은 부부를 비유적으로 나타내는 단어는?",
+            "choices": [
+                {"text": "참새 부부", "next": "second", "id": "wrong"},
+                {"text": "오리 부부", "next": "second", "id": "wrong"},
+                {"text": "잉꼬 부부", "next": "second", "id": "correct"}
+            ]
+        },
+        "second": {
+            "text": "다음 중 맞춤법이 틀린 문장은?\n\nA : 그 정책은 참담한 결과를 낳았다.\nB : 상황이 낮아졌다.\nC : 여러분이 기자보다 낫다.",
+            "choices": [
+                {"text": "A", "next": "third", "id": "wrong"},
+                {"text": "B", "next": "third", "id": "correct"},
+                {"text": "C", "next": "third", "id": "wrong"}
+            ]
+        },
+        "third": {
+            "text": "'자유자재로 나타나고 사라진다'라는 뜻의 사자성어는?",
+            "choices": [
+                {"text": "낭중지추", "next": "fourth", "id": "wrong"},
+                {"text": "사필귀정", "next": "fourth", "id": "wrong"},
+                {"text": "신출귀몰", "next": "fourth", "id": "correct"}
+            ]
+        },
+        "fourth": {
+            "text": "다음 중 맞춤법이 틀린 문장은?\n\nA : 그럼 내일 뵈요\nB : 하든 말든 상관없어요\nC : 이제 비로소 마음을 놓았다",
+            "choices": [
+                {"text": "A", "next": "fifth", "id": "correct"},
+                {"text": "B", "next": "fifth", "id": "wrong"},
+                {"text": "C", "next": "fifth", "id": "wrong"}
+            ]
+        },
+        "fifth": {
+            "text": "'나는 오늘 노래하지 ___.'\n\n 빈칸에 들어갈 단어는?",
+            "choices": [
+                {"text": "않겠다", "next": "end_game", "id": "correct"},
+                {"text": "앉겠다", "next": "end_game", "id": "wrong"},
+                {"text": "안겠다", "next": "end_game", "id": "wrong"}
+            ]
+        }
+    },
+    "Quiz2": {
+        "first": {
+            "text": "소음 측정 단위를 표시하는 기호는?",
+            "choices": [
+                {"text": "dB", "next": "second", "id": "correct"},
+                {"text": "lb", "next": "second", "id": "wrong"},
+                {"text": "kg", "next": "second", "id": "wrong"}
+            ]
+        },
+        "second": {
+            "text": "올림픽의 오륜기 색이 맞는 것은?",
+            "choices": [
+                {"text": "하양", "next": "third", "id": "wrong"},
+                {"text": "주황", "next": "third", "id": "wrong"},
+                {"text": "초록", "next": "third", "id": "correct"}
+            ]
+        },
+        "third": {
+            "text": "스마트폰을 기기에 접촉해 카드결제를 할 수 있는 통신기술의 이름은?",
+            "choices": [
+                {"text": "NFC", "next": "fourth", "id": "correct"},
+                {"text": "MP3", "next": "fourth", "id": "wrong"},
+                {"text": "LPS", "next": "fourth", "id": "wrong"}
+            ]
+        },
+        "fourth": {
+            "text": "한국의 국가 전화번호는?",
+            "choices": [
+                {"text": "01", "next": "fifth", "id": "wrong"},
+                {"text": "82", "next": "fifth", "id": "correct"},
+                {"text": "93", "next": "fifth", "id": "wrong"}
+            ]
+        },
+        "fifth": {
+            "text": "학교폭력 상담 전화의 번호는?",
+            "choices": [
+                {"text": "119", "next": "end_game", "id": "get_map"},
+                {"text": "117", "next": "end_game", "id": "correct"},
+                {"text": "127", "next": "end_game", "id": "get_map"}
+            ]
+        }},
+    "Quiz3": {
+        "first": {
+            "text": "c!",
+            "choices": [
+                {"text": "b", "next": "second", "id": "get_map"},
+                {"text": "b", "next": "second", "id": "get_map"},
+                {"text": "b", "next": "second", "id": "get_map"}
+            ]
+        },
+        "second": {
+            "text": "d",
+            "choices": [
+                {"text": "b", "next": "third", "id": "get_map"},
+                {"text": "b", "next": "third", "id": "get_map"},
+                {"text": "b", "next": "third", "id": "get_map"}
+            ]
+        },
+        "third": {
+            "text": "d",
+            "choices": [
+                {"text": "b", "next": "fourth", "id": "get_map"},
+                {"text": "b", "next": "fourth", "id": "get_map"},
+                {"text": "b", "next": "fourth", "id": "get_map"}
+            ]
+        },
+        "fourth": {
+            "text": "d",
+            "choices": [
+                {"text": "b", "next": "fifth", "id": "get_map"},
+                {"text": "b", "next": "fifth", "id": "get_map"},
+                {"text": "b", "next": "fifth", "id": "get_map"}
+            ]
+        },
+        "fifth": {
+            "text": "d",
+            "choices": [
+                {"text": "b", "next": "end_game", "id": "get_map"},
+                {"text": "b", "next": "end_game", "id": "get_map"},
+                {"text": "b", "next": "end_game", "id": "get_map"}
+            ]
+        }
+    },
+    "ending": {
+        "ending0-0": {
+            "text": "임시",
+            "choices": [
+                {"text": "다시 하기", "next": "start_game", "id": "ending"},
+                {"text": "종료 하기", "next": "quit", "id": "ending"}
+            ]
+        },
+        "ending0-1": {
+            "text": "합격",
+            "choices": [
+                {"text": "다시 하기", "next": "start_game", "id": "ending"},
+                {"text": "종료 하기", "next": "quit", "id": "ending"}
+            ]
+        },
+        "ending0-2": {
+            "text": "불합격",
+            "choices": [
+                {"text": "다시 하기", "next": "start_game", "id": "ending"},
+                {"text": "종료 하기", "next": "quit", "id": "ending"}
+            ]
+        },
+        "ending0": {
+            "text": "당신은 사망하였습니다.\n\n다시하시겠습니까?",
+            "choices": [
+                {"text": "다시 하기", "next": "start_game", "id": "ending"},
+                {"text": "종료 하기", "next": "quit", "id": "ending"}
+            ]
+        },
+        "ending1": {
+            "text": "엔딩 1\n\n<비상식적인 세상>\n\n당신은 신의 계시를 무시하고 그냥 이 세계를 받아들이기로 했습니다.\n\n당신의 포기로 인해 다른 이가 이 세상을 바꿀 수도, 아니면 이대로 영원히 바뀌지 않을 수도 있을 것 입니다.",
+            "image": "assets/images/tempImage.png",
+            "choices": [
+                {"text": "타이틀로", "next": "start_game", "id": "ending"},
+                {"text": "종료 하기", "next": "quit", "id": "ending"}
+            ]
+        },
+        "ending2": {
+            "text": "엔딩 2\n\n<바른 언어 세계>",
+            "choices": [
+                {"text": "타이틀로", "next": "start_game", "id": "ending"},
+                {"text": "종료 하기", "next": "quit", "id": "ending"}
+            ]
+        },
+        "ending3": {
+            "text": "엔딩 3\n\n<예의 바른 세계>",
+            "choices": [
+                {"text": "타이틀로", "next": "start_game", "id": "ending"},
+                {"text": "종료 하기", "next": "quit", "id": "ending"}
+            ]
+        },
+        "ending4": {
+            "text": "엔딩 4\n\n<옳은 생활 세계>",
+            "choices": [
+                {"text": "타이틀로", "next": "start_game", "id": "ending"},
+                {"text": "종료 하기", "next": "quit", "id": "ending"}
+            ]
+        },
+        "ending5": {
+            "text": "엔딩 5\n\n<거의 상식적인 세계>",
+            "choices": [
+                {"text": "타이틀로", "next": "start_game", "id": "ending"},
+                {"text": "종료 하기", "next": "quit", "id": "ending"}
+            ]
+        },
+        "ending6": {
+            "text": "엔딩 6\n\n<상식적인 세계>",
+            "choices": [
+                {"text": "타이틀로", "next": "start_game", "id": "ending"},
+                {"text": "종료 하기", "next": "quit", "id": "ending"}
+            ]
+        }
+    }
+}
