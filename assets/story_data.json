@@ -21,6 +21,7 @@
             ]
         }
     },
+
     "scenes1": {
         "first": {
             "text": "장면1",
@@ -119,6 +120,56 @@
             ]
         }
     },
+
+    "trader1": {
+        "first": {
+            "text": "당신은 한 고물상과 조우했습니다.\n\n상인은 당신에게 물건을 구매할것을 제안합니다.\n\n'흥, 물건을 사든가 말든가하고 안살거면 꺼져.'",
+            "choices": [
+                {"text": "물건을 구매한다", "next": "buy", "id": "none"},
+                {"text": "물건을 판매한다", "next": "sell", "id": "none"},
+                {"text": "지나간다", "next": "random_story", "id": "none"}
+            ]
+        },
+        "buy": {
+            "text": "'흥, 나는 신상품밖에 취급 안하는거 알지?'\n\n상인이 당신을 훑어보더니 인상을 찌푸립니다.",
+            "choices": [
+                {"text": "신상품?", "next": "second", "id": "none"},
+                {"text": "물건을 판매하지 않는다", "next": "random_story", "id": "none"}
+            ]
+        },
+        "second": {
+            "text": "'당연한거 아니야? 나는 고물상이라고.'\n\n상인이 당신을 어이없다는 듯 쳐다봅니다.",
+            "choices": [
+                {"text": "고물상은 낡은 물건을 파는거야", "next": "third", "id": "none"},
+                {"text": "그냥 간다", "next": "random_story", "id": "none"}
+            ]
+        },
+        "third": {
+            "text": "당신의 말에 상인이 화를 냅니다.\n\n'무슨 멍청한 소리! 내가 옳고 너가 틀렸어!'\n\n상인이 당신에게 역정을 내다, 당신의 어깨를 치고 갑니다.\n\n당신은 마음의 상처를 입고 다시 가던길로 걸어갑니다.",
+            "choices": [
+                {"text": "다음", "next": "random_story", "id": "none"}
+            ]
+        },
+        "sell": {
+            "text": "다음",
+            "choices": [
+                {"text": "지도", "next": "random_story", "id": "getMap"},
+                {"text": "낡은 운동화", "next": "random_story", "id": "getShoes"},
+                {"text": "우산", "next": "random_story", "id": "getUmbrella"},
+                {"text": "더 없어요?", "next": "more", "id": "none"}
+            ]
+        },
+        "more": {
+            "text": "다음",
+            "choices": [
+                {"text": "롱패딩", "next": "random_story", "id": "getPadding"},
+                {"text": "락핏", "next": "random_story", "id": "getLock"},
+                {"text": "책", "next": "random_story", "id": "getBook"},
+                {"text": "그냥 갈게요", "next": "random_story", "id": "none"}
+            ]
+        }
+    },
+
     "meet1": {
         "first": {
             "text": "당신은 첫번째 언어의 사도와 조우했습니다!",
@@ -164,6 +215,7 @@
             ]
         }
     },
+
     "Quiz1": {
         "first": {
             "text": "다정하고 금실 좋은 부부를 비유적으로 나타내는 단어는?",
@@ -289,6 +341,7 @@
             ]
         }
     },
+
     "ending": {
         "ending0-0": {
             "text": "임시",
