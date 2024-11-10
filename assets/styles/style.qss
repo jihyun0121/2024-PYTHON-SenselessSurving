@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+QWidget {
+    background-color: #D9D9D9;
+    color: #17171B;
+    font-family: Arial, sans-serif;
+}
+
+QPushButton {
+    border: none;
+    background-color: rgba(88, 88, 88, 0.8);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 10px;
+    min-width: 100px;
+    min-height: 20px;
+}
+
+QPushButton:hover {
+    background-color: #898989;
+}
+
+
+QLabel {
+    color: #17171B;
+}
+
+QListWidget {
+    background-color: black;
+    border: none;
+}

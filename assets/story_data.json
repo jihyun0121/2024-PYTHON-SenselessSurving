@@ -24,99 +24,117 @@
 
     "scenes1": {
         "first": {
-            "text": "장면1",
+            "text": "지도 추가",
             "choices": [
-                {"text": "다음", "next": "second", "id": "none"}
+                {"text": "다음", "next": "second", "id": "get_map"}
             ]
         },
         "second": {
-            "text": "다음",
+            "text": "보석 추가",
             "choices": [
-                {"text": "다음", "next": "random_story", "id": "none"}
+                {"text": "다음", "next": "third", "id": "get_gem"}
+            ]
+        },
+        "third": {
+            "text": "보석 추가2",
+            "choices": [
+                {"text": "다음", "next": "fourth", "id": "get_gem"}
+            ]
+        },
+        "fourth": {
+            "text": "지도 감소",
+            "choices": [
+                {"text": "다음", "next": "fifth", "id": "lose_map"}
+            ]
+        },
+        "fifth": {
+            "text": "보석 감소",
+            "choices": [
+                {"text": "다음", "next": "random_story", "id": "lose_gem"}
             ]
         }
     },
     "scenes2": {
         "first": {
-            "text": "장면2",
+            "text": "체력 추가",
             "choices": [
-                {"text": "다음", "next": "second", "id": "none"}
+                {"text": "다음", "next": "second", "id": "get_live"}
             ]
         },
         "second": {
-            "text": "다음",
+            "text": "체력 감소",
             "choices": [
-                {"text": "다음", "next": "random_story", "id": "none"}
+                {"text": "다음", "next": "random_story", "id": "lose_live"}
             ]
         }
     },
     "scenes3": {
         "first": {
-            "text": "장면3",
+            "text": "멘탈 추가",
             "choices": [
-                {"text": "다음", "next": "second", "id": "none"}
+                {"text": "다음", "next": "second", "id": "get_sense"}
             ]
         },
         "second": {
-            "text": "다음",
+            "text": "멘탈 감소",
             "choices": [
-                {"text": "다음", "next": "random_story", "id": "none"}
+                {"text": "다음", "next": "random_story", "id": "lose_sense"}
             ]
         }
     },
     "scenes4": {
         "first": {
-            "text": "장면4",
+            "text": "돈 감소",
             "choices": [
-                {"text": "다음", "next": "second", "id": "none"}
+                {"text": "다음", "next": "second", "id": "lose_money"}
             ]
         },
         "second": {
-            "text": "다음",
+            "text": "돈 추가",
             "choices": [
-                {"text": "다음", "next": "random_story", "id": "none"}
+                {"text": "다음", "next": "random_story", "id": "get_money"}
             ]
         }
     },
     "scenes5": {
         "first": {
-            "text": "장면5",
+            "text": "멘탈 감소",
             "choices": [
-                {"text": "다음", "next": "second", "id": "none"}
+                {"text": "다음", "next": "second", "id": "lose_sense"}
             ]
         },
         "second": {
-            "text": "다음",
+            "text": "멘탈 추가",
             "choices": [
-                {"text": "다음", "next": "random_story", "id": "none"}
+                {"text": "다음", "next": "random_story", "id": "get_sense"}
             ]
         }
     },
     "scenes6": {
         "first": {
-            "text": "장면6",
+            "text": "생명 감소",
             "choices": [
-                {"text": "다음", "next": "second", "id": "none"}
+                {"text": "다음", "next": "second", "id": "lose_live"}
             ]
         },
         "second": {
-            "text": "다음",
+            "text": "생명 추가",
             "choices": [
-                {"text": "다음", "next": "random_story", "id": "none"}
+                {"text": "다음", "next": "random_story", "id": "get_live"}
             ]
         }
     },
     "scenes7": {
         "first": {
-            "text": "장면7",
+            "text": "돈 얻기",
             "choices": [
-                {"text": "다음", "next": "second", "id": "none"}
+                {"text": "다음", "next": "second", "id": "get_money"}
             ]
         },
         "second": {
-            "text": "다음",
+            "text": "돈 감소",
             "choices": [
-                {"text": "다음", "next": "random_story", "id": "none"}
+                {"text": "다음", "next": "random_story", "id": "lose_money"}
             ]
         }
     },
@@ -130,7 +148,7 @@
                 {"text": "지나간다", "next": "random_story", "id": "none"}
             ]
         },
-        "buy": {
+        "sell": {
             "text": "'흥, 나는 신상품밖에 취급 안하는거 알지?'\n\n상인이 당신을 훑어보더니 인상을 찌푸립니다.",
             "choices": [
                 {"text": "신상품?", "next": "second", "id": "none"},
@@ -150,21 +168,21 @@
                 {"text": "다음", "next": "random_story", "id": "none"}
             ]
         },
-        "sell": {
+        "buy": {
             "text": "다음",
             "choices": [
-                {"text": "지도", "next": "random_story", "id": "getMap"},
-                {"text": "낡은 운동화", "next": "random_story", "id": "getShoes"},
-                {"text": "우산", "next": "random_story", "id": "getUmbrella"},
+                {"text": "지도", "next": "random_story", "id": "get_map, lose_money"},
+                {"text": "낡은 운동화", "next": "random_story", "id": "get_shoes, lose_money"},
+                {"text": "우산", "next": "random_story", "id": "get_umbrella, lose_money"},
                 {"text": "더 없어요?", "next": "more", "id": "none"}
             ]
         },
         "more": {
             "text": "다음",
             "choices": [
-                {"text": "롱패딩", "next": "random_story", "id": "getPadding"},
-                {"text": "락핏", "next": "random_story", "id": "getLock"},
-                {"text": "책", "next": "random_story", "id": "getBook"},
+                {"text": "롱패딩", "next": "random_story", "id": "get_padding, lose_money"},
+                {"text": "락핏", "next": "random_story", "id": "get_lock, lose_money"},
+                {"text": "책", "next": "random_story", "id": "get_book, lose_money"},
                 {"text": "그냥 갈게요", "next": "random_story", "id": "none"}
             ]
         }
