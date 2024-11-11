@@ -73,6 +73,7 @@ class GameWindow(QWidget):
     def load_scenes(self):  #배열에 자동(동적) 추가
         self.scenes = [key for key in self.story_data if key.startswith('scenes')]
         self.scenes += [key for key in self.story_data if key.startswith('trader')]
+        self.scenes += [key for key in self.story_data if key.startswith('meet')]
 
     def show_item_list(self):
         if self.item_list.isVisible():
