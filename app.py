@@ -203,6 +203,56 @@ class GameWindow(QWidget):
         except KeyError as e:
             QMessageBox.critical(self, "에러", f"장면 '{scene_name}' 또는 카테고리 '{category}'을(를) 찾을 수 없습니다. 오류: {e}")
 
+    def reset_choice(self):
+        for i in reversed(range(self.choice_buttons_layout.count())):
+            widget = self.choice_buttons_layout.itemAt(i).widget()
+            if widget is not None:
+                widget.deleteLater()
+
+    def reset_game(self):
+        # 현재 레이아웃의 모든 위젯과 레이아웃을 제거
+        def clear_layout(layout):
+            if layout is not None:
+                while layout.count():
+                    item = layout.takeAt(0)
+                    widget = item.widget()
+                    if widget is not None:
+                        widget.deleteLater()
+                    elif item.layout():
+                        clear_layout(item.layout())
+
+        clear_layout(self.layout)
+
+        # 게임에서 사용된 추가 레이아웃 초기화
+        if hasattr(self, 'status_layout'):
+            clear_layout(self.status_layout)
+            self.status_layout.deleteLater()
+            del self.status_layout
+
+        if hasattr(self, 'choice_buttons_layout'):
+            clear_layout(self.choice_buttons_layout)
+            self.choice_buttons_layout.deleteLater()
+            del self.choice_buttons_layout
+
+        # 아이템 목록 삭제
+        if hasattr(self, 'item_list'):
+            self.item_list.deleteLater()
+            del self.item_list
+
+        # 게임 상태 초기화
+        self.status = {
+            "lives": 3,
+            "sense": 3,
+            "money": 3,
+            "found_treasures": 0
+        }
+
+        # 남은 scenes 리스트 초기화
+        self.load_scenes()
+
+        # 타이틀 화면을 다시 표시
+        self.show_title()
+
     def get_items(self, items):
         item_dict = {}
 
@@ -420,6 +470,12 @@ class GameWindow(QWidget):
         else:
             self.display_scene(current_category, next_scene)
 
+    def show_message(self, message):
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Icon.Warning)
+        msg.setText(message)
+        msg.setWindowTitle("경고")
+        msg.exec()
 
 def main():
     init_db()
