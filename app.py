@@ -172,6 +172,37 @@ class GameWindow(QWidget):
         # 게임 시작 데이터 로드
         self.display_scene('intro', 'start_game')
 
+    def display_scene(self, category, scene_name):
+        self.current_category = category
+
+        try:
+            data = self.story_data[category][scene_name]
+
+            self.story_text_label.setText(data['text'])
+
+            if data.get('image'):
+                pixmap = QPixmap(data['image']).scaled(400, 200, Qt.AspectRatioMode.KeepAspectRatio)
+                self.story_image_label.setPixmap(pixmap)
+            else:
+                self.story_image_label.clear()
+
+            # 선택지 버튼을 리셋
+            self.reset_choice()
+
+            # 새로운 선택지 버튼 추가
+            for choice in data['choices']:
+                button = QPushButton(choice['text'])
+                button.clicked.connect(
+                    lambda checked, next=choice['next'], action_id=choice['id']: self.make_choice(next, action_id))
+                self.choice_buttons_layout.addWidget(button)
+
+            # 상태 및 아이템 업데이트 (초기 설정)
+            self.update_status(data.get('status', {}))
+            self.get_items(data.get('items', []))
+
+        except KeyError as e:
+            QMessageBox.critical(self, "에러", f"장면 '{scene_name}' 또는 카테고리 '{category}'을(를) 찾을 수 없습니다. 오류: {e}")
+
 def main():
     init_db()
     app = QApplication(sys.argv)
