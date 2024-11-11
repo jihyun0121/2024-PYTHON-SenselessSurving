@@ -203,6 +203,102 @@ class GameWindow(QWidget):
         except KeyError as e:
             QMessageBox.critical(self, "에러", f"장면 '{scene_name}' 또는 카테고리 '{category}'을(를) 찾을 수 없습니다. 오류: {e}")
 
+    def get_items(self, items):
+        item_dict = {}
+
+        print(f"현재 추가된 아이템: {items}")  # 배열 확인용
+
+        # 아이템 개수 세기
+        for item in items:
+            if item in item_dict:
+                item_dict[item] += 1
+            else:
+                item_dict[item] = 1
+
+        # 리스트에 있는 아이템 업데이트
+        for i in range(self.item_list.count()):
+            item_text = self.item_list.item(i).text()
+            item_name = item_text.split(" x ")[0]
+            if item_name in item_dict:
+                new_count = item_dict[item_name] + int(item_text.split(" x ")[1])  # 기존 개수에 더함
+                self.item_list.item(i).setText(f"{item_name} x {new_count}")
+                del item_dict[item_name]  # 이미 처리한 아이템은 삭제
+
+        # 새로운 아이템 추가
+        for item, count in item_dict.items():
+            if count > 0:  # 개수가 0보다 클 때만 추가
+                list_item = QListWidgetItem(f"{item} x {count}")
+                self.item_list.addItem(list_item)
+
+    def lose_items(self, items):
+        matching_items = [self.item_list.item(i) for i in range(self.item_list.count()) if
+                          items in self.item_list.item(i).text()]
+
+        if matching_items:
+            current_item = matching_items[0]
+            current_text = current_item.text()
+            current_count = int(current_text.split(" x ")[1])
+            new_count = current_count - 1
+
+            if new_count > 0:
+                current_item.setText(f"{items} x {new_count}")
+            else:
+                self.item_list.takeItem(self.item_list.row(current_item))
+            return True  # 아이템이 충분하여 성공적으로 감소함
+        else:
+            self.show_message(f"{items} 부족")
+            return False  # 아이템이 부족하여 화면 전환을 막기 위해 False 반환
+
+    def get_Ability(self, ability):
+        item_dict = {}
+
+        # 아이템 개수 세기
+        for item in ability:
+            if item in item_dict:
+                item_dict[item] += 1
+            else:
+                item_dict[item] = 1
+
+        # 리스트에 있는 아이템 업데이트
+        for i in range(self.item_list.count()):
+            item_text = self.item_list.item(i).text()
+            item_name = item_text.split(" lv. ")[0]
+            if item_name in item_dict:
+                new_count = item_dict[ability] + int(item_text.split(" x ")[1])  # 기존 개수에 더함
+                self.item_list.item(i).setText(f"{ability} x {new_count}")
+                del item_dict[ability]  # 이미 처리한 아이템은 삭제
+
+        # 새로운 아이템 추가
+        for item, count in item_dict.items():
+            if count > 0:  # 개수가 0보다 클 때만 추가
+                list_item = QListWidgetItem(f"{item} lv. {count}")
+                self.item_list.addItem(list_item)
+
+    def lose_Ability(self, ability):
+        # 현재 아이템 목록에서 이름에 해당하는 아이템을 찾기
+        matching_items = [self.item_list.item(i) for i in range(self.item_list.count()) if
+                          ability in self.item_list.item(i).text()]
+
+        if matching_items:
+            current_item = matching_items[0]
+            current_text = current_item.text()
+
+            # 현재 아이템 개수 추출
+            current_count = int(current_text.split(" lv. ")[1])
+
+            # 개수를 1 감소
+            new_count = current_count - 1
+
+            if new_count > 0:
+                # 아이템 개수를 업데이트
+                current_item.setText(f"{ability} lv. {new_count}")
+            else:
+                # 아이템 개수가 0이면 아이템 삭제
+                self.item_list.takeItem(self.item_list.row(current_item))
+        else:
+            self.show_message(f"{ability} 부족")
+            return False  # 아이템이 부족하여 화면 전환을 막기 위해 False 반환
+
     def make_choice(self, next_scene, action_id):
         current_category = self.current_category
         Q_correct = 0
