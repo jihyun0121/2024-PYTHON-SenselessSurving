@@ -1,6 +1,7 @@
 import sqlite3
 import json
 import sys
+import random
 from PyQt6.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QPushButton, QHBoxLayout, QListWidget, \
     QListWidgetItem, QMessageBox
 from PyQt6.QtGui import QPixmap
@@ -202,6 +203,19 @@ class GameWindow(QWidget):
 
         except KeyError as e:
             QMessageBox.critical(self, "에러", f"장면 '{scene_name}' 또는 카테고리 '{category}'을(를) 찾을 수 없습니다. 오류: {e}")
+
+    def update_status(self, status):
+        # 기본 상태 값
+        lives = status.get('lives', self.status['lives'])
+        sense = status.get('sense', self.status['sense'])
+        money = status.get('money', self.status['money'])
+        found_treasures = status.get('found_treasures', self.status['found_treasures'])
+
+        # 개별 레이블 업데이트
+        self.lives_label.setText(f"목숨: {'❤️' * lives}")
+        self.sense_label.setText(f"멘탈: {'📝' * sense}")
+        self.money_label.setText(f"돈: {'💰' * money}")
+        self.final_label.setText(f"보물: {'✨' * found_treasures}")
 
     def reset_choice(self):
         for i in reversed(range(self.choice_buttons_layout.count())):
