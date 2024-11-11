@@ -203,6 +203,128 @@ class GameWindow(QWidget):
         except KeyError as e:
             QMessageBox.critical(self, "에러", f"장면 '{scene_name}' 또는 카테고리 '{category}'을(를) 찾을 수 없습니다. 오류: {e}")
 
+    def make_choice(self, next_scene, action_id):
+        current_category = self.current_category
+        Q_correct = 0
+        corrects = 0
+
+        action_id = [id.strip() for id in action_id.split(",")]
+
+        for id in action_id:
+            if id == "none":
+                continue
+            elif id == "get_live" and self.status['lives'] < 3:
+                self.status['lives'] += 1
+            elif id == "lose_live":
+                self.status['lives'] -= 1
+                if self.status['lives'] == 0:
+                    self.display_scene("ending", "ending0")
+
+            elif id == "get_sense" and self.status['sense'] < 3:
+                self.status['sense'] += 1
+            elif id == "lose_sense":
+                self.status['sense'] -= 1
+                if self.status['sense'] == 0:
+                    self.display_scene("ending", "ending0")
+
+            elif id == "get_money" and self.status['money'] < 3:
+                self.status['money'] += 1
+            elif id == "lose_money":
+                if self.status['money'] == 0:
+                    self.show_message("돈이 부족합니다!")
+                    return  # 화면 전환을 막기 위해 return
+                else:
+                    self.status['money'] -= 1
+
+            elif id == "get_map":
+                self.get_items(["지도"])  # map 아이템 추가
+            elif id == "lose_map":
+                if not self.lose_items("지도"):  # lose_items에서 false return하면 화면전환 x
+                    return
+
+            elif id == "get_gem":
+                self.get_items(["보석"])  # gem 아이템 추가
+            elif id == "lose_gem":
+                # gem 아이템 개수를 1 줄입니다.
+                if not self.lose_items("보석"):
+                    return
+
+            elif id == "get_shoes":
+                self.get_items(["운동화"])  # map 아이템 추가
+            elif id == "lose_shoes":
+                if not self.lose_items("운동화"):
+                    return
+
+            elif id == "get_umbrella":
+                self.get_items(["우산"])  # gem 아이템 추가
+            elif id == "lose_umbrella":
+                # gem 아이템 개수를 1 줄입니다.
+                if not self.lose_items("우산"):
+                    return
+
+            elif id == "get_padding":
+                self.get_items(["롱패딩"])  # map 아이템 추가
+            elif id == "lose_padding":
+                if not self.lose_items("롱패딩"):
+                    return
+
+            elif id == "get_book":
+                self.get_items(["책"])  # gem 아이템 추가
+            elif id == "lose_book":
+                # gem 아이템 개수를 1 줄입니다.
+                if not self.lose_items("책"):
+                    return
+
+            elif id == "get_lock":
+                self.get_Ability(["자물쇠 따기"])  # map 아이템 추가
+            elif id == "lose_lock":
+                if not self.lose_Ability("자물쇠 따기"):
+                    return
+
+            elif id == "get_rice":
+                self.get_items(["밥"])  # gem 아이템 추가
+            elif id == "lose_rice":
+                # gem 아이템 개수를 1 줄입니다.
+                if not self.lose_Ability("밥"):
+                    return
+
+            elif id == "quiz":
+                Q_correct = 0
+            elif id == "correct":
+                Q_correct += 1
+            elif Q_correct >= 4:
+                corrects += 1
+                Q_correct = 0
+
+        # 상태 업데이트
+        self.update_status(self.status)
+
+        # 다음 장면으로 이동
+        if "/" in next_scene:
+            category, scene_name = next_scene.split("/")
+            self.display_scene(category, scene_name)
+        elif next_scene == "random_story":
+            if len(self.scenes) > 0:  # 남은 랜덤 장면이 있는 경우
+                random_scene = random.choice(self.scenes) + '/first'
+                category, scene_name = random_scene.split('/')
+                self.display_scene(category, scene_name)
+                self.scenes.remove(category)  # 이미 나온 장면은 리스트에서 삭제
+            else:  # 남은 장면이 없으면 ending0-0으로 이동
+                self.display_scene("ending", "ending0-0")
+        elif next_scene == "start_game":
+            self.reset_game()
+            self.show_title()
+        elif next_scene == "end_game" or len(self.scenes) < 0:
+            if corrects >= 3:
+                self.display_scene("ending", "ending0-1")
+            else:
+                self.display_scene("ending", "ending0-2")
+        elif next_scene == "quit":
+            QApplication.quit()
+        else:
+            self.display_scene(current_category, next_scene)
+
+
 def main():
     init_db()
     app = QApplication(sys.argv)
