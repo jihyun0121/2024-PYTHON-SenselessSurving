@@ -1,21 +1,39 @@
 {
     "intro": {
         "start_game": {
-            "text": "모종의 이유로 비상식적인 세계에서 신의 계시를 받아 상식인이 되어 세상을 상식적으로 되돌리기 위한 여정을 떠나게 됩니다···.",
+            "text": "당신은 모종의 이유로 비상식적인 세계에서 유일한 상식인이 되어 세상을 상식적으로 되돌리기 위한 여정을 떠나게 됩니다···.",
             "image": "assets/images/tempImage.png",
             "choices": [
                 {"text": "다음", "next": "first", "id": "none"}
             ]
         },
         "first": {
-            "text": "여느때와 다름없이 당신은 평범한 하루를 보내던 중, 갑작스레 모든 것이 어긋나 있는 세상을 깨닫습니다. 도로는 물로 덮여 있으며, 사람들은 서로의 언어를 이해하지 못하고, 기본적인 예의조차도 찾아볼 수 없습니다.\n세상이 이렇게 비상식적이라는 사실을 자각한 순간, 당신의 머릿속에 낯선 목소리가 울려 퍼집니다.\n\n'이 비상식적인 세상을 바로잡아라. 나는 이 일을 위해 세 명의 사도를 보내었으니, 그들의 퀴즈를 통과하면 예절, 언어, 생활의 질서가 회복될 것이다. 너는 나의 계시를 받은 자로서 그들을 찾아가야 한다.'",
+            "text": "여느때와 다름없이 평범한 하루를 보내던 중, 당신은 갑작스레 모든 것이 어긋나 있는 세상을 깨닫습니다.",
             "choices": [
-                {"text": "신의 계시를 받아들인다", "next": "second", "id": "none"},
-                {"text": "그냥 이상한 세계에서 살아가기로 한다", "next": "ending/ending1", "id": "none"}
+                {"text": "다음", "next": "second", "id": "none"}
             ]
         },
         "second": {
-            "text": "당신은 눈앞에 펼쳐진 혼돈을 잠시 바라본 뒤, 사도들을 찾아 나서기로 결심합니다.",
+            "text": "도로는 물로 덮여 있으며, 사람들은 서로의 언어를 이해하지 못하고, 기본적인 예의조차도 찾아볼 수 없습니다.",
+            "choices": [
+                {"text": "다음", "next": "third", "id": "none"}
+            ]
+        },
+        "third": {
+            "text": "세상이 이렇게 비상식적이라는 사실을 자각한 순간, 당신의 눈 앞에 지도 하나가 떨어졌습니다.",
+            "choices": [
+                {"text": "다음", "next": "fourth", "id": "get_map"}
+            ]
+        },
+        "fourth": {
+            "text": "\n\n'이 비상식적인 세상을 바로잡아라. 세 명의 가디언의 퀴즈를 통과하면 예절, 언어, 생활의 질서가 회복될 것이다.'",
+            "choices": [
+                {"text": "모험을 떠나기로 한다", "next": "fifth", "id": "none"},
+                {"text": "그냥 이상한 세계에서 살아가기로 한다", "next": "ending/ending1", "id": "none"}
+            ]
+        },
+        "fifth": {
+            "text": "당신은 눈앞에 펼쳐진 혼돈을 잠시 바라본 뒤, 가디언들을 찾아 나서기로 결심합니다.",
             "choices": [
                 {"text": "다음", "next": "random_story", "id": "none"}
             ]
@@ -24,42 +42,124 @@
 
     "scenes1": {
         "first": {
-            "text": "스탯 감소",
+            "text": "지도 추가",
             "choices": [
-                {"text": "다음", "next": "second", "id": "lose_live, lose_sense, lose_money"}
+                {"text": "다음", "next": "second", "id": "get_map"}
             ]
         },
         "second": {
-            "text": "아이템 추가",
+            "text": "보석 추가",
             "choices": [
-                {"text": "다음", "next": "third", "id": "lose_money, get_map, get_gem, get_shoes, get_umbrella, get_padding, get_book, get_lock, get_rice"}
+                {"text": "다음", "next": "third", "id": "get_gem"}
             ]
         },
         "third": {
-            "text": "아이템 감소",
+            "text": "보석 추가2",
             "choices": [
-                {"text": "다음", "next": "fourth", "id": "lose_map, lose_gem"}
+                {"text": "다음", "next": "fourth", "id": "get_gem"}
             ]
         },
         "fourth": {
-            "text": "스텟 추가",
+            "text": "지도 감소",
             "choices": [
-                {"text": "1", "next": "fifth", "id": "lose_money, get_live, get_sense, get_money"},
-                {"text": "다음", "next": "fifth", "id": "none"}
+                {"text": "다음", "next": "fifth", "id": "lose_map"}
             ]
         },
         "fifth": {
-            "text": "돈, 아이템 없을 때 (지도)",
+            "text": "보석 감소",
             "choices": [
-                {"text": "감소", "next": "random_story", "id": "lose_map"},
-                {"text": "다음", "next": "random_story", "id": "none"}
+                {"text": "다음", "next": "random_story", "id": "lose_gem"}
+            ]
+        }
+    },
+    "scenes2": {
+        "first": {
+            "text": "체력 추가",
+            "choices": [
+                {"text": "다음", "next": "second", "id": "get_live"}
+            ]
+        },
+        "second": {
+            "text": "체력 감소",
+            "choices": [
+                {"text": "다음", "next": "random_story", "id": "lose_live"}
+            ]
+        }
+    },
+    "scenes3": {
+        "first": {
+            "text": "멘탈 추가",
+            "choices": [
+                {"text": "다음", "next": "second", "id": "get_sense"}
+            ]
+        },
+        "second": {
+            "text": "멘탈 감소",
+            "choices": [
+                {"text": "다음", "next": "random_story", "id": "lose_sense"}
+            ]
+        }
+    },
+    "scenes4": {
+        "first": {
+            "text": "돈 감소",
+            "choices": [
+                {"text": "다음", "next": "second", "id": "lose_money"}
+            ]
+        },
+        "second": {
+            "text": "돈 추가",
+            "choices": [
+                {"text": "다음", "next": "random_story", "id": "get_money"}
+            ]
+        }
+    },
+    "scenes5": {
+        "first": {
+            "text": "멘탈 감소",
+            "choices": [
+                {"text": "다음", "next": "second", "id": "lose_sense"}
+            ]
+        },
+        "second": {
+            "text": "멘탈 추가",
+            "choices": [
+                {"text": "다음", "next": "random_story", "id": "get_sense"}
+            ]
+        }
+    },
+    "scenes6": {
+        "first": {
+            "text": "생명 감소",
+            "choices": [
+                {"text": "다음", "next": "second", "id": "lose_live"}
+            ]
+        },
+        "second": {
+            "text": "생명 추가",
+            "choices": [
+                {"text": "다음", "next": "random_story", "id": "get_live"}
+            ]
+        }
+    },
+    "scenes7": {
+        "first": {
+            "text": "돈 얻기",
+            "choices": [
+                {"text": "다음", "next": "second", "id": "get_money"}
+            ]
+        },
+        "second": {
+            "text": "돈 감소",
+            "choices": [
+                {"text": "다음", "next": "random_story", "id": "lose_money"}
             ]
         }
     },
 
     "trader1": {
         "first": {
-            "text": "당신은 한 고물상과 조우했습니다.\n\n상인은 당신에게 물건을 구매할것을 제안합니다.\n\n'흥, 물건을 사든가 말든가하고 안살거면 꺼져.'",
+            "text": "<아이템 상인>",
             "image": "assets/images/tempImage.png",
             "choices": [
                 {"text": "물건을 구매한다", "next": "buy", "id": "none"},
@@ -68,87 +168,160 @@
             ]
         },
         "sell": {
-            "text": "'흥, 나는 신상품밖에 취급 안하는거 알지?'\n\n상인이 당신을 훑어보더니 인상을 찌푸립니다.",
+            "text": "물건을 판매한다",
             "choices": [
-                {"text": "신상품?", "next": "second", "id": "none"},
+                {"text": "우산", "next": "random_story", "id": "lose_umbrella, get_money"},
+                {"text": "신발", "next": "random_story", "id": "lose_shoes, get_money"},
+                {"text": "책", "next": "random_story", "id": "lose_book, get_money"},
                 {"text": "물건을 판매하지 않는다", "next": "random_story", "id": "none"}
             ]
         },
-        "second": {
-            "text": "'당연한거 아니야? 나는 고물상이라고.'\n\n상인이 당신을 어이없다는 듯 쳐다봅니다.",
-            "choices": [
-                {"text": "고물상은 낡은 물건을 파는거야", "next": "third", "id": "none"},
-                {"text": "그냥 간다", "next": "random_story", "id": "none"}
-            ]
-        },
-        "third": {
-            "text": "당신의 말에 상인이 화를 냅니다.\n\n'무슨 멍청한 소리! 내가 옳고 너가 틀렸어!'\n\n상인이 당신에게 역정을 내다, 당신의 어깨를 치고 갑니다.\n\n당신은 마음의 상처를 입고 다시 가던길로 걸어갑니다.",
-            "choices": [
-                {"text": "다음", "next": "random_story", "id": "lose_sense"}
-            ]
-        },
         "buy": {
-            "text": "다음",
+            "text": "물건을 구매한다",
             "choices": [
                 {"text": "지도", "next": "random_story", "id": "get_map, lose_money"},
                 {"text": "낡은 운동화", "next": "random_story", "id": "get_shoes, lose_money"},
                 {"text": "우산", "next": "random_story", "id": "get_umbrella, lose_money"},
-                {"text": "더 없어요?", "next": "more", "id": "none"}
+                {"text": "물건 더보기", "next": "more", "id": "none"}
             ]
         },
         "more": {
             "text": "다음",
             "choices": [
                 {"text": "롱패딩", "next": "random_story", "id": "get_padding, lose_money"},
-                {"text": "락핏", "next": "random_story", "id": "get_lock, lose_money"},
+                {"text": "케이크", "next": "random_story", "id": "get_cake, lose_money"},
                 {"text": "책", "next": "random_story", "id": "get_book, lose_money"},
-                {"text": "그냥 갈게요", "next": "random_story", "id": "none"}
+                {"text": "이전", "next": "buy", "id": "get_book, lose_money"},
+                {"text": "물건을 구매하지 않는다", "next": "random_story", "id": "none"}
+            ]
+        }
+    },
+    "trader2": {
+        "first": {
+            "text": "<능력 상인>",
+            "image": "assets/images/tempImage.png",
+            "choices": [
+                {"text": "물건을 구매한다", "next": "buy", "id": "none"},
+                {"text": "지나간다", "next": "random_story", "id": "none"}
+            ]
+        },
+        "buy": {
+            "text": "물건을 구매한다",
+            "choices": [
+                {"text": "덤벨", "next": "random_story", "id": "get_healthy, lose_money"},
+                {"text": "의료 서적", "next": "random_story", "id": "get_emergency, lose_money"},
+                {"text": "장갑", "next": "random_story", "id": "get_handmade, lose_money"},
+                {"text": "물건 더보기", "next": "more", "id": "none"}
+            ]
+        },
+        "more": {
+            "text": "다음",
+            "choices": [
+                {"text": "락핏", "next": "random_story", "id": "get_lock, lose_money"},
+                {"text": "커다란 구슬", "next": "random_story", "id": "get_intuition, lose_money"},
+                {"text": "악보", "next": "random_story", "id": "get_musician, lose_money"},
+                {"text": "이전", "next": "buy", "id": "get_book, lose_money"},
+                {"text": "물건을 구매하지 않는다", "next": "random_story", "id": "none"}
             ]
         }
     },
 
     "meet1": {
         "first": {
-            "text": "당신은 첫번째 언어의 사도와 조우했습니다!",
+            "text": "지도에 표시되어있던 학교에 도착했습니다.\n시끌벅적한 교문을 지나 학교 안으로 진입했습니다.\n\n당신은 학교에 들어서자마자 이상한 공간으로 이동되었습니다.",
             "choices": [
                 {"text": "다음", "next": "second", "id": "none"}
             ]
         },
         "second": {
-            "text": "'퀴즈를 맞춘다면 <언어> 상식을 다시 되돌려놓을 수 있을 거야.'",
+            "text": "당신은 언어의 가디언과 조우했습니다!",
+            "choices": [
+                {"text": "다음", "next": "third", "id": "none"}
+            ]
+        },
+        "third": {
+            "text": "'제 이름은 리타입니다. 저는 이 곳에서 학생들을 가르치는 일을 하고 있었죠.'",
+            "choices": [
+                {"text": "다음", "next": "fourth", "id": "none"}
+            ]
+        },
+        "fourth": {
+            "text": "'만약 당신이 퀴즈를 맞춘다면 <생활> 상식을 되찾게 될 것입니다.'",
             "choices": [
                 {"text": "퀴즈를 풀자", "next": "Quiz1/first", "id": "quiz"},
-                {"text": "포기한다", "next": "random_story", "id": "none"}
+                {"text": "포기한다", "next": "fifth", "id": "none"}
+            ]
+        },
+        "fifth": {
+            "text": "'..그렇군요. 안녕히 가십시오.'\n\n당신은 리타를 뒤로하고 다시 모험을 떠나기로 합니다.",
+            "choices": [
+                {"text": "다시 모험으로", "next": "random_story", "id": "none"}
             ]
         }
     },
     "meet2": {
         "first": {
-            "text": "당신은 두번째 생활의 사도와 조우했습니다!",
+            "text": "지도에 표시되어있던 한 식당에 도착했습니다.\n당신은 가게의 문을 열고 들어서자마자 이상한 공간으로 이동되었습니다.",
             "choices": [
                 {"text": "다음", "next": "second", "id": "none"}
             ]
         },
         "second": {
-            "text": "'퀴즈를 맞춘다면 <생활> 상식을 되찾게 될 것입니다.'",
+            "text": "당신은 생활의 가디언과 조우했습니다!",
+            "choices": [
+                {"text": "다음", "next": "third", "id": "none"}
+            ]
+        },
+        "third": {
+            "text": "'난 생활의 가디언 미네야. 여기서 요리사 일을 하고있었어.'",
+            "choices": [
+                {"text": "다음", "next": "fourth", "id": "none"}
+            ]
+        },
+        "fourth": {
+            "text": "'만약 네가 퀴즈를 맞춘다면 <생활> 상식을 되돌려놓을 수 있을거야.'",
             "choices": [
                 {"text": "퀴즈를 풀자", "next": "Quiz2/first", "id": "quiz"},
-                {"text": "포기한다", "next": "random_story", "id": "none"}
+                {"text": "포기한다", "next": "fifth", "id": "none"}
+            ]
+        },
+        "fifth": {
+            "text": "'뭐.. 그래. 너한테는 무리였나보지. 잘가.'\n\n당신은 미네를 뒤로하고 다시 모험을 떠나기로 합니다.",
+            "choices": [
+                {"text": "다시 모험으로", "next": "random_story", "id": "none"}
             ]
         }
     },
     "meet3": {
         "first": {
-            "text": "당신은 세번째 예의의 사도와 조우했습니다!",
+            "text": "지도에 표시되어있던 한 주택가에 도착했습니다.\n어느 길목으로 들어서자마자 이상한 공간으로 이동되었습니다.",
             "choices": [
                 {"text": "다음", "next": "second", "id": "none"}
             ]
         },
         "second": {
-            "text": "'퀴즈를 통과한다면 <예의> 상식을 다시 되돌려놓을 수 있겠지.'",
+            "text": "당신은 예의의 가디언과 조우했습니다!",
+            "choices": [
+                {"text": "다음", "next": "third", "id": "none"}
+            ]
+        },
+        "third": {
+            "text": "'난 예의의 가디언 쟈크다. 이곳에서 살아가고 있었지.'",
+            "choices": [
+                {"text": "다음", "next": "fourth", "id": "none"}
+            ]
+        },
+        "fourth": {
+            "text": "'만약 네가 퀴즈를 맞춘다면 <예의> 상식을 되찾을 수 있을것이다.'",
             "choices": [
                 {"text": "퀴즈를 풀자", "next": "Quiz3/first", "id": "quiz"},
-                {"text": "포기한다", "next": "random_story", "id": "none"}
+                {"text": "포기한다", "next": "fifth", "id": "none"}
+            ]
+        },
+        "fifth": {
+            "text": "'하.. 다시는 만나는 일 없었으면 좋겠군.'\n\n당신은 쟈크를 뒤로하고 다시 모험을 떠나기로 합니다.",
+            "choices": [
+                {"text": "다시 모험으로", "next": "random_story", "id": "none"}
             ]
         }
     },
@@ -157,24 +330,24 @@
         "first": {
             "text": "다정하고 금실 좋은 부부를 비유적으로 나타내는 단어는?",
             "choices": [
-                {"text": "참새 부부", "next": "second", "id": "wrong"},
-                {"text": "오리 부부", "next": "second", "id": "wrong"},
+                {"text": "참새 부부", "next": "second", "id": "none"},
+                {"text": "오리 부부", "next": "second", "id": "none"},
                 {"text": "잉꼬 부부", "next": "second", "id": "correct"}
             ]
         },
         "second": {
             "text": "다음 중 맞춤법이 틀린 문장은?\n\nA : 그 정책은 참담한 결과를 낳았다.\nB : 상황이 낮아졌다.\nC : 여러분이 기자보다 낫다.",
             "choices": [
-                {"text": "A", "next": "third", "id": "wrong"},
+                {"text": "A", "next": "third", "id": "none"},
                 {"text": "B", "next": "third", "id": "correct"},
-                {"text": "C", "next": "third", "id": "wrong"}
+                {"text": "C", "next": "third", "id": "none"}
             ]
         },
         "third": {
             "text": "'자유자재로 나타나고 사라진다'라는 뜻의 사자성어는?",
             "choices": [
-                {"text": "낭중지추", "next": "fourth", "id": "wrong"},
-                {"text": "사필귀정", "next": "fourth", "id": "wrong"},
+                {"text": "낭중지추", "next": "fourth", "id": "none"},
+                {"text": "사필귀정", "next": "fourth", "id": "none"},
                 {"text": "신출귀몰", "next": "fourth", "id": "correct"}
             ]
         },
@@ -182,16 +355,16 @@
             "text": "다음 중 맞춤법이 틀린 문장은?\n\nA : 그럼 내일 뵈요\nB : 하든 말든 상관없어요\nC : 이제 비로소 마음을 놓았다",
             "choices": [
                 {"text": "A", "next": "fifth", "id": "correct"},
-                {"text": "B", "next": "fifth", "id": "wrong"},
-                {"text": "C", "next": "fifth", "id": "wrong"}
+                {"text": "B", "next": "fifth", "id": "none"},
+                {"text": "C", "next": "fifth", "id": "none"}
             ]
         },
         "fifth": {
             "text": "'나는 오늘 노래하지 ___.'\n\n 빈칸에 들어갈 단어는?",
             "choices": [
                 {"text": "않겠다", "next": "random_story", "id": "correct"},
-                {"text": "앉겠다", "next": "random_story", "id": "wrong"},
-                {"text": "안겠다", "next": "random_story", "id": "wrong"}
+                {"text": "앉겠다", "next": "random_story", "id": "none"},
+                {"text": "안겠다", "next": "random_story", "id": "none"}
             ]
         }
     },
@@ -200,15 +373,15 @@
             "text": "소음 측정 단위를 표시하는 기호는?",
             "choices": [
                 {"text": "dB", "next": "second", "id": "correct"},
-                {"text": "lb", "next": "second", "id": "wrong"},
-                {"text": "kg", "next": "second", "id": "wrong"}
+                {"text": "lb", "next": "second", "id": "none"},
+                {"text": "kg", "next": "second", "id": "none"}
             ]
         },
         "second": {
             "text": "올림픽의 오륜기 색이 맞는 것은?",
             "choices": [
-                {"text": "하양", "next": "third", "id": "wrong"},
-                {"text": "주황", "next": "third", "id": "wrong"},
+                {"text": "하양", "next": "third", "id": "none"},
+                {"text": "주황", "next": "third", "id": "none"},
                 {"text": "초록", "next": "third", "id": "correct"}
             ]
         },
@@ -216,16 +389,16 @@
             "text": "스마트폰을 기기에 접촉해 카드결제를 할 수 있는 통신기술의 이름은?",
             "choices": [
                 {"text": "NFC", "next": "fourth", "id": "correct"},
-                {"text": "MP3", "next": "fourth", "id": "wrong"},
-                {"text": "LPS", "next": "fourth", "id": "wrong"}
+                {"text": "MP3", "next": "fourth", "id": "none"},
+                {"text": "LPS", "next": "fourth", "id": "none"}
             ]
         },
         "fourth": {
             "text": "한국의 국가 전화번호는?",
             "choices": [
-                {"text": "01", "next": "fifth", "id": "wrong"},
+                {"text": "01", "next": "fifth", "id": "none"},
                 {"text": "82", "next": "fifth", "id": "correct"},
-                {"text": "93", "next": "fifth", "id": "wrong"}
+                {"text": "93", "next": "fifth", "id": "none"}
             ]
         },
         "fifth": {
@@ -238,64 +411,45 @@
         }},
     "Quiz3": {
         "first": {
-            "text": "c!",
+            "text": "집 안에 들어갈 때 신발을 벗어야한다",
             "choices": [
-                {"text": "b", "next": "second", "id": "wrong"},
-                {"text": "b", "next": "second", "id": "wrong"},
-                {"text": "b", "next": "second", "id": "correct"}
+                {"text": "O", "next": "second", "id": "none"},
+                {"text": "X", "next": "second", "id": "correct"}
             ]
         },
         "second": {
-            "text": "a",
+            "text": "어른과 대화할 때 눈을 마주치지 않는 것이 예의이다",
             "choices": [
-                {"text": "b", "next": "third", "id": "wrong"},
-                {"text": "b", "next": "third", "id": "wrong"},
-                {"text": "b", "next": "third", "id": "correct"}
+                {"text": "O", "next": "third", "id": "correct"},
+                {"text": "X", "next": "third", "id": "none"}
             ]
         },
         "third": {
-            "text": "b",
+            "text": "어른에게 술을 따를 때 한 손으로만 따르는 것이 예의이다",
             "choices": [
-                {"text": "b", "next": "fourth", "id": "wrong"},
-                {"text": "b", "next": "fourth", "id": "wrong"},
-                {"text": "b", "next": "fourth", "id": "correct"}
+                {"text": "O", "next": "fourth", "id": "none"},
+                {"text": "X", "next": "fourth", "id": "correct"}
             ]
         },
         "fourth": {
-            "text": "c",
+            "text": "집 안에 들어갈 때 신발을 벗어야한다",
             "choices": [
-                {"text": "b", "next": "fifth", "id": "wrong"},
-                {"text": "b", "next": "fifth", "id": "wrong"},
-                {"text": "b", "next": "fifth", "id": "correct"}
+                {"text": "O", "next": "fifth", "id": "correct"},
+                {"text": "X", "next": "fifth", "id": "none"}
             ]
         },
         "fifth": {
-            "text": "d",
+            "text": "비행기를 탈땐 신발을 벗어야한다",
             "choices": [
-                {"text": "b", "next": "random_story", "id": "wrong"},
-                {"text": "b", "next": "random_story", "id": "wrong"},
-                {"text": "b", "next": "random_story", "id": "correct"}
+                {"text": "O", "next": "random_story", "id": "none"},
+                {"text": "X", "next": "random_story", "id": "correct"}
             ]
         }
     },
 
     "ending": {
         "ending0-0": {
-            "text": "임시",
-            "choices": [
-                {"text": "다시 하기", "next": "start_game", "id": "ending"},
-                {"text": "종료 하기", "next": "quit", "id": "ending"}
-            ]
-        },
-        "ending0-1": {
-            "text": "합격",
-            "choices": [
-                {"text": "다시 하기", "next": "start_game", "id": "ending"},
-                {"text": "종료 하기", "next": "quit", "id": "ending"}
-            ]
-        },
-        "ending0-2": {
-            "text": "불합격",
+            "text": "엔딩 0",
             "choices": [
                 {"text": "다시 하기", "next": "start_game", "id": "ending"},
                 {"text": "종료 하기", "next": "quit", "id": "ending"}
@@ -309,7 +463,7 @@
             ]
         },
         "ending1": {
-            "text": "엔딩 1\n\n<비상식적인 세상>\n\n당신은 신의 계시를 무시하고 그냥 이 세계를 받아들이기로 했습니다.\n\n당신의 포기로 인해 다른 이가 이 세상을 바꿀 수도, 아니면 이대로 영원히 바뀌지 않을 수도 있을 것 입니다.",
+            "text": "엔딩 1\n\n<비상식적인 세상>\n\n당신은 그냥 이 세계를 받아들이기로 했습니다.\n\n당신의 포기로 인해 다른 이가 이 세상을 바꿀 수도, 아니면 이대로 영원히 바뀌지 않을 수도 있게 되었습니다.",
             "image": "assets/images/tempImage.png",
             "choices": [
                 {"text": "타이틀로", "next": "start_game", "id": "ending"},
@@ -317,34 +471,13 @@
             ]
         },
         "ending2": {
-            "text": "엔딩 2\n\n<바른 언어 세계>",
-            "choices": [
-                {"text": "타이틀로", "next": "start_game", "id": "ending"},
-                {"text": "종료 하기", "next": "quit", "id": "ending"}
-            ]
-        },
-        "ending3": {
-            "text": "엔딩 3\n\n<예의 바른 세계>",
-            "choices": [
-                {"text": "타이틀로", "next": "start_game", "id": "ending"},
-                {"text": "종료 하기", "next": "quit", "id": "ending"}
-            ]
-        },
-        "ending4": {
-            "text": "엔딩 4\n\n<옳은 생활 세계>",
-            "choices": [
-                {"text": "타이틀로", "next": "start_game", "id": "ending"},
-                {"text": "종료 하기", "next": "quit", "id": "ending"}
-            ]
-        },
-        "ending5": {
             "text": "엔딩 5\n\n<거의 상식적인 세계>",
             "choices": [
                 {"text": "타이틀로", "next": "start_game", "id": "ending"},
                 {"text": "종료 하기", "next": "quit", "id": "ending"}
             ]
         },
-        "ending6": {
+        "ending3": {
             "text": "엔딩 6\n\n<상식적인 세계>",
             "choices": [
                 {"text": "타이틀로", "next": "start_game", "id": "ending"},
