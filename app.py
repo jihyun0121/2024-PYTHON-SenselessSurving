@@ -1,4 +1,3 @@
-import sqlite3
 import json
 import sys
 import random
@@ -7,29 +6,12 @@ from PyQt6.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QPushBut
 from PyQt6.QtGui import QPixmap
 from PyQt6.QtCore import Qt
 
-DATABASE = 'db/saves.db'
 STORY_DATA_FILE = 'assets/story_data.json'
 
-#DB 연결, 테이블 설정
-def init_db():
-    conn = sqlite3.connect(DATABASE)
-    cursor = conn.cursor()
-    cursor.execute('''CREATE TABLE IF NOT EXISTS game_saves (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        scenes TEXT NOT NULL,
-        lives INTEGER NOT NULL,
-        sense INTEGER NOT NULL,
-        money INTEGER NOT NULL,
-        found_treasures INTEGER NOT NULL,
-        items TEXT NOT NULL
-    )''')
-    conn.commit()
-    conn.close()
-
-#스토리 json 파일 불러오기
 def load_story_data():
     with open(STORY_DATA_FILE, 'r', encoding='utf-8') as f:
         return json.load(f)
+
 
 class GameWindow(QWidget):
     def __init__(self):
@@ -299,6 +281,8 @@ class GameWindow(QWidget):
         matching_items = [self.item_list.item(i) for i in range(self.item_list.count()) if
                           items in self.item_list.item(i).text()]
 
+        print(f"현재 감소된 아이템: {items}")  # 배열 확인용
+
         if matching_items:
             current_item = matching_items[0]
             current_text = current_item.text()
@@ -316,6 +300,8 @@ class GameWindow(QWidget):
 
     def get_Ability(self, ability):
         item_dict = {}
+
+        print(f"현재 추가된 능력: {ability}")  # 배열 확인용
 
         # 아이템 개수 세기
         for item in ability:
@@ -344,6 +330,9 @@ class GameWindow(QWidget):
         matching_items = [self.item_list.item(i) for i in range(self.item_list.count()) if
                           ability in self.item_list.item(i).text()]
 
+
+        print(f"현재 감소된 능력: {ability}")  # 배열 확인용
+
         if matching_items:
             current_item = matching_items[0]
             current_text = current_item.text()
@@ -361,7 +350,7 @@ class GameWindow(QWidget):
                 # 아이템 개수가 0이면 아이템 삭제
                 self.item_list.takeItem(self.item_list.row(current_item))
         else:
-            self.show_message(f"{ability} 부족")
+            self.show_message(f"{ability}이 부족합니다!")
             return False  # 아이템이 부족하여 화면 전환을 막기 위해 False 반환
 
     def make_choice(self, next_scene, action_id):
@@ -398,55 +387,51 @@ class GameWindow(QWidget):
                     self.status['money'] -= 1
 
             elif id == "get_map":
-                self.get_items(["지도"])  # map 아이템 추가
+                self.get_items(["지도"])
             elif id == "lose_map":
                 if not self.lose_items("지도"):  # lose_items에서 false return하면 화면전환 x
                     return
 
             elif id == "get_gem":
-                self.get_items(["보석"])  # gem 아이템 추가
+                self.get_items(["보석"])
             elif id == "lose_gem":
-                # gem 아이템 개수를 1 줄입니다.
                 if not self.lose_items("보석"):
                     return
 
             elif id == "get_shoes":
-                self.get_items(["운동화"])  # map 아이템 추가
+                self.get_items(["운동화"])
             elif id == "lose_shoes":
                 if not self.lose_items("운동화"):
                     return
 
             elif id == "get_umbrella":
-                self.get_items(["우산"])  # gem 아이템 추가
+                self.get_items(["우산"])
             elif id == "lose_umbrella":
-                # gem 아이템 개수를 1 줄입니다.
                 if not self.lose_items("우산"):
                     return
 
             elif id == "get_padding":
-                self.get_items(["롱패딩"])  # map 아이템 추가
+                self.get_items(["롱패딩"])
             elif id == "lose_padding":
                 if not self.lose_items("롱패딩"):
                     return
 
             elif id == "get_book":
-                self.get_items(["책"])  # gem 아이템 추가
+                self.get_items(["책"])
             elif id == "lose_book":
-                # gem 아이템 개수를 1 줄입니다.
                 if not self.lose_items("책"):
                     return
 
             elif id == "get_lock":
-                self.get_Ability(["자물쇠 따기"])  # map 아이템 추가
+                self.get_Ability(["자물쇠 따기"])
             elif id == "lose_lock":
                 if not self.lose_Ability("자물쇠 따기"):
                     return
 
             elif id == "get_rice":
-                self.get_items(["밥"])  # gem 아이템 추가
+                self.get_items(["케이크"])
             elif id == "lose_rice":
-                # gem 아이템 개수를 1 줄입니다.
-                if not self.lose_Ability("밥"):
+                if not self.lose_items("케이크"):
                     return
 
             elif id == "quiz":

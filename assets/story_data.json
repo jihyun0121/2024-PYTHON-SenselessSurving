@@ -24,117 +24,35 @@
 
     "scenes1": {
         "first": {
-            "text": "지도 추가",
+            "text": "스탯 감소",
             "choices": [
-                {"text": "다음", "next": "second", "id": "get_map"}
+                {"text": "다음", "next": "second", "id": "lose_live, lose_sense, lose_money"}
             ]
         },
         "second": {
-            "text": "보석 추가",
+            "text": "아이템 추가",
             "choices": [
-                {"text": "다음", "next": "third", "id": "get_gem"}
+                {"text": "다음", "next": "third", "id": "lose_money, get_map, get_gem, get_shoes, get_umbrella, get_padding, get_book, get_lock, get_rice"}
             ]
         },
         "third": {
-            "text": "보석 추가2",
+            "text": "아이템 감소",
             "choices": [
-                {"text": "다음", "next": "fourth", "id": "get_gem"}
+                {"text": "다음", "next": "fourth", "id": "lose_map, lose_gem"}
             ]
         },
         "fourth": {
-            "text": "지도 감소",
+            "text": "스텟 추가",
             "choices": [
-                {"text": "다음", "next": "fifth", "id": "lose_map"}
+                {"text": "1", "next": "fifth", "id": "lose_money, get_live, get_sense, get_money"},
+                {"text": "다음", "next": "fifth", "id": "none"}
             ]
         },
         "fifth": {
-            "text": "보석 감소",
+            "text": "돈, 아이템 없을 때 (지도)",
             "choices": [
-                {"text": "다음", "next": "random_story", "id": "lose_gem"}
-            ]
-        }
-    },
-    "scenes2": {
-        "first": {
-            "text": "체력 추가",
-            "choices": [
-                {"text": "다음", "next": "second", "id": "get_live"}
-            ]
-        },
-        "second": {
-            "text": "체력 감소",
-            "choices": [
-                {"text": "다음", "next": "random_story", "id": "lose_live"}
-            ]
-        }
-    },
-    "scenes3": {
-        "first": {
-            "text": "멘탈 추가",
-            "choices": [
-                {"text": "다음", "next": "second", "id": "get_sense"}
-            ]
-        },
-        "second": {
-            "text": "멘탈 감소",
-            "choices": [
-                {"text": "다음", "next": "random_story", "id": "lose_sense"}
-            ]
-        }
-    },
-    "scenes4": {
-        "first": {
-            "text": "돈 감소",
-            "choices": [
-                {"text": "다음", "next": "second", "id": "lose_money"}
-            ]
-        },
-        "second": {
-            "text": "돈 추가",
-            "choices": [
-                {"text": "다음", "next": "random_story", "id": "get_money"}
-            ]
-        }
-    },
-    "scenes5": {
-        "first": {
-            "text": "멘탈 감소",
-            "choices": [
-                {"text": "다음", "next": "second", "id": "lose_sense"}
-            ]
-        },
-        "second": {
-            "text": "멘탈 추가",
-            "choices": [
-                {"text": "다음", "next": "random_story", "id": "get_sense"}
-            ]
-        }
-    },
-    "scenes6": {
-        "first": {
-            "text": "생명 감소",
-            "choices": [
-                {"text": "다음", "next": "second", "id": "lose_live"}
-            ]
-        },
-        "second": {
-            "text": "생명 추가",
-            "choices": [
-                {"text": "다음", "next": "random_story", "id": "get_live"}
-            ]
-        }
-    },
-    "scenes7": {
-        "first": {
-            "text": "돈 얻기",
-            "choices": [
-                {"text": "다음", "next": "second", "id": "get_money"}
-            ]
-        },
-        "second": {
-            "text": "돈 감소",
-            "choices": [
-                {"text": "다음", "next": "random_story", "id": "lose_money"}
+                {"text": "감소", "next": "random_story", "id": "lose_map"},
+                {"text": "다음", "next": "random_story", "id": "none"}
             ]
         }
     },
@@ -142,6 +60,7 @@
     "trader1": {
         "first": {
             "text": "당신은 한 고물상과 조우했습니다.\n\n상인은 당신에게 물건을 구매할것을 제안합니다.\n\n'흥, 물건을 사든가 말든가하고 안살거면 꺼져.'",
+            "image": "assets/images/tempImage.png",
             "choices": [
                 {"text": "물건을 구매한다", "next": "buy", "id": "none"},
                 {"text": "물건을 판매한다", "next": "sell", "id": "none"},
@@ -165,7 +84,7 @@
         "third": {
             "text": "당신의 말에 상인이 화를 냅니다.\n\n'무슨 멍청한 소리! 내가 옳고 너가 틀렸어!'\n\n상인이 당신에게 역정을 내다, 당신의 어깨를 치고 갑니다.\n\n당신은 마음의 상처를 입고 다시 가던길로 걸어갑니다.",
             "choices": [
-                {"text": "다음", "next": "random_story", "id": "none"}
+                {"text": "다음", "next": "random_story", "id": "lose_sense"}
             ]
         },
         "buy": {
@@ -270,9 +189,9 @@
         "fifth": {
             "text": "'나는 오늘 노래하지 ___.'\n\n 빈칸에 들어갈 단어는?",
             "choices": [
-                {"text": "않겠다", "next": "end_game", "id": "correct"},
-                {"text": "앉겠다", "next": "end_game", "id": "wrong"},
-                {"text": "안겠다", "next": "end_game", "id": "wrong"}
+                {"text": "않겠다", "next": "random_story", "id": "correct"},
+                {"text": "앉겠다", "next": "random_story", "id": "wrong"},
+                {"text": "안겠다", "next": "random_story", "id": "wrong"}
             ]
         }
     },
@@ -312,50 +231,50 @@
         "fifth": {
             "text": "학교폭력 상담 전화의 번호는?",
             "choices": [
-                {"text": "119", "next": "end_game", "id": "get_map"},
-                {"text": "117", "next": "end_game", "id": "correct"},
-                {"text": "127", "next": "end_game", "id": "get_map"}
+                {"text": "119", "next": "random_story", "id": "get_map"},
+                {"text": "117", "next": "random_story", "id": "correct"},
+                {"text": "127", "next": "random_story", "id": "get_map"}
             ]
         }},
     "Quiz3": {
         "first": {
             "text": "c!",
             "choices": [
-                {"text": "b", "next": "second", "id": "get_map"},
-                {"text": "b", "next": "second", "id": "get_map"},
-                {"text": "b", "next": "second", "id": "get_map"}
+                {"text": "b", "next": "second", "id": "wrong"},
+                {"text": "b", "next": "second", "id": "wrong"},
+                {"text": "b", "next": "second", "id": "correct"}
             ]
         },
         "second": {
-            "text": "d",
+            "text": "a",
             "choices": [
-                {"text": "b", "next": "third", "id": "get_map"},
-                {"text": "b", "next": "third", "id": "get_map"},
-                {"text": "b", "next": "third", "id": "get_map"}
+                {"text": "b", "next": "third", "id": "wrong"},
+                {"text": "b", "next": "third", "id": "wrong"},
+                {"text": "b", "next": "third", "id": "correct"}
             ]
         },
         "third": {
-            "text": "d",
+            "text": "b",
             "choices": [
-                {"text": "b", "next": "fourth", "id": "get_map"},
-                {"text": "b", "next": "fourth", "id": "get_map"},
-                {"text": "b", "next": "fourth", "id": "get_map"}
+                {"text": "b", "next": "fourth", "id": "wrong"},
+                {"text": "b", "next": "fourth", "id": "wrong"},
+                {"text": "b", "next": "fourth", "id": "correct"}
             ]
         },
         "fourth": {
-            "text": "d",
+            "text": "c",
             "choices": [
-                {"text": "b", "next": "fifth", "id": "get_map"},
-                {"text": "b", "next": "fifth", "id": "get_map"},
-                {"text": "b", "next": "fifth", "id": "get_map"}
+                {"text": "b", "next": "fifth", "id": "wrong"},
+                {"text": "b", "next": "fifth", "id": "wrong"},
+                {"text": "b", "next": "fifth", "id": "correct"}
             ]
         },
         "fifth": {
             "text": "d",
             "choices": [
-                {"text": "b", "next": "end_game", "id": "get_map"},
-                {"text": "b", "next": "end_game", "id": "get_map"},
-                {"text": "b", "next": "end_game", "id": "get_map"}
+                {"text": "b", "next": "random_story", "id": "wrong"},
+                {"text": "b", "next": "random_story", "id": "wrong"},
+                {"text": "b", "next": "random_story", "id": "correct"}
             ]
         }
     },
