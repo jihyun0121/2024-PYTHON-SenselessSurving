@@ -54,6 +54,7 @@ class GameWindow(QWidget):
         # 초기 리스트, 배열 설정
         self.scenes = []
         self.meet = []
+        self.Q_correct = 0
         self.status = {
             "lives": 3,
             "sense": 3,
@@ -486,11 +487,12 @@ class GameWindow(QWidget):
                     return
 
             elif id == "quiz":
-                Q_correct = 0
+                self.Q_correct = 0
             elif id == "correct":
-                Q_correct += 1
-                if Q_correct == 3:
+                self.Q_correct += 1
+                if self.Q_correct == 3:
                     self.status['end_correct'] += 1
+                    self.Q_correct = 0
 
         # 상태 업데이트
         self.update_status(self.status)
@@ -504,8 +506,8 @@ class GameWindow(QWidget):
                 random_scene = random.choice(self.scenes) + '/first'
                 category, scene_name = random_scene.split('/')
                 self.display_scene(category, scene_name)
-                self.scenes.remove(category)  # 이미 나온 장면은 리스트에서 삭제
-            else:  # 남은 장면이 없으면 ending0-0으로 이동
+                self.scenes.remove(category)
+            else:
                 self.display_scene("ending", "ending0-0")
         elif next_scene == "start_game":
             self.reset_game()
@@ -513,7 +515,7 @@ class GameWindow(QWidget):
         elif next_scene == "end_game" or len(self.scenes) == 0:
             if self.status['end_correct'] >= 3:
                 self.display_scene("ending", "ending3")
-            elif self.status['end_corrext'] > 0 and self.status['end_corrext'] < 3:
+            elif 0 < self.status['end_correct'] < 3:
                 self.display_scene("ending", "ending3")
             else:
                 self.display_scene("ending", "ending1")
@@ -528,20 +530,19 @@ class GameWindow(QWidget):
         msg.setText(message)
         msg.setWindowTitle("경고")
         msg.exec()
-        
+
     def start_typing_effect(self, text):
         self.current_text = text
         self.text_index = 0
-        self.story_text_label.setText("")  # 텍스트 초기화
+        self.story_text_label.setText("")
         self.typing_timer.start(20)  # 타이머 설정 (50초 마다 글자 추가)
 
     def update_typing_effect(self):
         if self.text_index < len(self.current_text):
-            # 현재 인덱스 위치의 글자를 추가
             self.story_text_label.setText(self.story_text_label.text() + self.current_text[self.text_index])
             self.text_index += 1
         else:
-            self.typing_timer.stop()  # 텍스트가 모두 출력되면 타이머 중지
+            self.typing_timer.stop()
 def main():
     app = QApplication(sys.argv)
     window = GameWindow()
