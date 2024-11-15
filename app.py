@@ -109,7 +109,7 @@ class GameWindow(QWidget):
 
         # 제목, 게임 시작 추가
         self.title_image_label = QLabel(self)
-        pixmap = QPixmap('assets/images/title/title.png')
+        pixmap = QPixmap('assets/images/title.png')
         self.title_image_label.setPixmap(pixmap.scaled(300, 200, Qt.AspectRatioMode.KeepAspectRatio))
         self.title_layout.addWidget(self.title_image_label)
 
@@ -231,6 +231,11 @@ class GameWindow(QWidget):
         self.sense_label.setText(f"멘탈: {'📝' * sense}")
         self.money_label.setText(f"돈: {'💰' * money}")
         self.final_label.setText(f"상식: {'✨' * end_correct}")
+
+        if self.status['lives'] <= 0 or self.status['sense'] <= 0:
+            if self.current_category != "ending":  # ending 호출한 경우 방지 (무한 재귀호출 에러 발생..)
+                self.display_scene("ending", "ending0")
+            return
 
     def reset_choice(self):
         for i in reversed(range(self.choice_buttons_layout.count())):
@@ -383,15 +388,11 @@ class GameWindow(QWidget):
                 self.status['lives'] += 1
             elif id == "lose_live":
                 self.status['lives'] -= 1
-                if self.status['lives'] == 0:
-                    self.display_scene("ending", "ending0")
 
             elif id == "get_sense" and self.status['sense'] < 3:
                 self.status['sense'] += 1
             elif id == "lose_sense":
                 self.status['sense'] -= 1
-                if self.status['sense'] == 0:
-                    self.display_scene("ending", "ending0")
 
             elif id == "get_money" and self.status['money'] < 3:
                 self.status['money'] += 1
@@ -516,7 +517,7 @@ class GameWindow(QWidget):
             if self.status['end_correct'] >= 3:
                 self.display_scene("ending", "ending3")
             elif 0 < self.status['end_correct'] < 3:
-                self.display_scene("ending", "ending3")
+                self.display_scene("ending", "ending2")
             else:
                 self.display_scene("ending", "ending1")
         elif next_scene == "quit":

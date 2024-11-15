@@ -179,13 +179,15 @@
         "first": {
             "text": "<랜덤 8 - 체력 전부 소진 시>\n\n체력 감소1",
             "choices": [
-                {"text": "감소", "next": "second", "id": "lose_live"}
+                {"text": "감소", "next": "second", "id": "lose_live"},
+                {"text": "다음", "next": "second", "id": "none"}
             ]
         },
         "second": {
             "text": "체력 감소2",
             "choices": [
-                {"text": "감소", "next": "third", "id": "lose_live"}
+                {"text": "감소", "next": "third", "id": "lose_live"},
+                {"text": "다음", "next": "third", "id": "none"}
             ]
         },
         "third": {
@@ -200,13 +202,15 @@
         "first": {
             "text": "<랜덤 9 - 멘탈 전부 소진 시>\n\n멘탈 감소1",
             "choices": [
-                {"text": "감소", "next": "second", "id": "lose_sense"}
+                {"text": "감소", "next": "second", "id": "lose_sense"},
+                {"text": "다음", "next": "second", "id": "none"}
             ]
         },
         "second": {
             "text": "멘탈 감소2",
             "choices": [
-                {"text": "감소", "next": "third", "id": "lose_sense"}
+                {"text": "감소", "next": "third", "id": "lose_sense"},
+                {"text": "다음", "next": "third", "id": "none"}
             ]
         },
         "third": {
@@ -221,21 +225,28 @@
         "first": {
             "text": "<랜덤 10 - 돈 전부 소진 시>\n\n돈 감소1",
             "choices": [
-                {"text": "감소", "next": "second", "id": "lose_live"},
+                {"text": "감소", "next": "second", "id": "lose_money"},
                 {"text": "다음", "next": "second", "id": "none"}
             ]
         },
         "second": {
             "text": "돈 감소2",
             "choices": [
-                {"text": "감소", "next": "third", "id": "get_live"},
+                {"text": "감소", "next": "third", "id": "lose_money"},
                 {"text": "다음", "next": "third", "id": "none"}
             ]
         },
         "third": {
             "text": "돈 감소3",
             "choices": [
-                {"text": "감소", "next": "random_story", "id": "get_live"},
+                {"text": "감소", "next": "fourth", "id": "lose_money"},
+                {"text": "다음", "next": "random_story", "id": "none"}
+            ]
+        },
+        "fourth": {
+            "text": "돈 감소3",
+            "choices": [
+                {"text": "감소", "next": "random_story", "id": "lose_money"},
                 {"text": "다음", "next": "random_story", "id": "none"}
             ]
         }
@@ -449,9 +460,9 @@
         "fifth": {
             "text": "'나는 오늘 노래하지 ___.'\n\n 빈칸에 들어갈 단어는?",
             "choices": [
-                {"text": "않겠다", "next": "meet4/first", "id": "correct"},
-                {"text": "앉겠다", "next": "meet4/first", "id": "none"},
-                {"text": "안겠다", "next": "meet4/first", "id": "none"}
+                {"text": "않겠다", "next": "Q_end1/first", "id": "correct"},
+                {"text": "앉겠다", "next": "Q_end1/first", "id": "none"},
+                {"text": "안겠다", "next": "Q_end1/first", "id": "none"}
             ]
         }
     },
@@ -491,9 +502,9 @@
         "fifth": {
             "text": "학교폭력 상담 전화의 번호는?",
             "choices": [
-                {"text": "119", "next": "meet5/first", "id": "get_map"},
-                {"text": "117", "next": "meet5/first", "id": "correct"},
-                {"text": "127", "next": "meet5/first", "id": "get_map"}
+                {"text": "119", "next": "Q_end2/first", "id": "get_map"},
+                {"text": "117", "next": "Q_end2/first", "id": "correct"},
+                {"text": "127", "next": "Q_end2/first", "id": "get_map"}
             ]
         }},
     "Quiz3": {
@@ -528,13 +539,13 @@
         "fifth": {
             "text": "비행기를 탈땐 신발을 벗어야한다",
             "choices": [
-                {"text": "O", "next": "meet6/first", "id": "none"},
-                {"text": "X", "next": "meet6/first", "id": "correct"}
+                {"text": "O", "next": "Q_end3/first", "id": "none"},
+                {"text": "X", "next": "Q_end3/first", "id": "correct"}
             ]
         }
     },
 
-    "meet4": {
+    "Q_end1": {
         "first": {
             "text": "'정말로 수고 많았어. 다음에 또 볼 수 있었으면 좋겠네.'",
             "choices": [
@@ -548,7 +559,7 @@
             ]
         }
     },
-    "meet5": {
+    "Q_end2": {
         "first": {
             "text": "'수고하셨어요. 좋은 결과가 있었기를 바래요.'",
             "choices": [
@@ -562,7 +573,7 @@
             ]
         }
     },
-    "meet6": {
+    "Q_end3": {
         "first": {
             "text": "'수고 많았군. 좋은 경험이었기를 바라지.'",
             "choices": [
