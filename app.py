@@ -53,7 +53,6 @@ class GameWindow(QWidget):
 
         # 초기 리스트, 배열 설정
         self.scenes = []
-        self.meet = []
         self.Q_correct = 0
         self.status = {
             "lives": 3,
@@ -539,11 +538,20 @@ class GameWindow(QWidget):
         self.typing_timer.start(20)  # 타이머 설정 (50초 마다 글자 추가)
 
     def update_typing_effect(self):
-        if self.text_index < len(self.current_text):
+        if not hasattr(self, 'story_text_label') or self.story_text_label is None:
+            return
+
+        try:
             self.story_text_label.setText(self.story_text_label.text() + self.current_text[self.text_index])
             self.text_index += 1
-        else:
+
+            if self.text_index >= len(self.current_text):
+                self.typing_timer.stop()
+        except RuntimeError as e:
+            print("Error updating typing effect:", e)
             self.typing_timer.stop()
+
+
 def main():
     app = QApplication(sys.argv)
     window = GameWindow()
